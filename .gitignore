@@ -19,4 +19,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# frontend
 frontend/config/secrets.js
+
+# infra
+infra/config/credentials/
+.terraform
