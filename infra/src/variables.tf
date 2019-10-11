@@ -31,6 +31,7 @@ variable "service" {
     "serviceusage.googleapis.com",
     "logging.googleapis.com",
     "pubsub.googleapis.com",
-    "storage-api.googleapis.com"
+    "storage-api.googleapis.com",
+    "identitytoolkit.googleapis.com"
   ]
 }
