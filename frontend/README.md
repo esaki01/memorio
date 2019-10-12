@@ -1,40 +1,26 @@
-# frontend
+# memorio/frontend
 
-## Project setup
-```
-$ npm install
-```
+## Environments
+- Programming language: JavaScript, HTML, CSS
+- Framework: Vue, Bulma
+- Platform: Node.js
+- Web server: nginx
 
-### Compiles and hot-reloads for development
+## Project usage
+### Local
 ```
-$ npm run serve
-```
+# Setup project
+$ make setup
 
-### Compiles and minifies for production
-```
-$ npm run build
-```
-
-### Run your tests
-```
-$ npm run test
+# Run application
+$ make run
 ```
 
-### Lints and fixes files
+### Container
 ```
-$ npm run lint
-```
+# Build image
+$ make container-build
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## Container
-### build
-```
-$ docker build -t memorio/frontend .
-```
-
-### run
-```
-$ docker container run -p 8080:8080 memorio/frontend
+# Run container
+$ make container-run
 ```
