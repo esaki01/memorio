@@ -1,28 +1,29 @@
 <template>
   <div class="home">
-    <div class="card">
-      <header class="card-header">
-        <div class="field has-addons search-form">
-          <div class="control">
-            <input class="input" type="text" placeholder="Find a word" v-model="keyword" />
-          </div>
-          <div class="control">
-            <a class="button" @click="search">Search</a>
-          </div>
-        </div>
-      </header>
+    <progress class="progress is-small is-primary" max="100" v-if="progressShow">15%</progress>
+    <div style="height: 12px;" v-else></div>
+    <div class="field has-addons search-form">
+      <div class="control">
+        <input class="input" type="text" placeholder="Find a word" v-model="keyword" />
+      </div>
+      <div class="control">
+        <a class="button" @click="search">Search</a>
+      </div>
+    </div>
+    <div class="card" v-if="hasWordDefinition">
       <div class="card-content">
         <div class="content">
-          <p>word: {{ wordDefinition.word }}</p>
-          <p>meaning: {{ wordDefinition.meaning }}</p>
-          <p>phonetic symbol: {{ wordDefinition.phonetic_symbol }}</p>
-          <audio :src="wordDefinition.audio_url" v-if="audioControl" controls></audio>
+          <p>
+            <span class="word">{{ wordDefinition.word }}</span>
+            [{{ wordDefinition.phonetic_symbol }}]
+          </p>
+          <p class="tag is-success">meaning</p>
+          <p>{{ wordDefinition.meaning }}</p>
+          <audio :src="wordDefinition.audio_url" controls></audio>
         </div>
       </div>
       <footer class="card-footer">
-        <a href="#" class="card-footer-item">Save</a>
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
+        <a href="#" class="card-footer-item">Register</a>
       </footer>
     </div>
   </div>
@@ -36,11 +37,13 @@ export default {
     return {
       keyword: "",
       wordDefinition: {},
-      audioControl: false
+      hasWordDefinition: false,
+      progressShow: false
     };
   },
   methods: {
     search: function() {
+      this.progressShow = true;
       axios
         .get("https://backend-o5x5u66yaq-uc.a.run.app/weblio/search", {
           params: { keyword: this.keyword }
@@ -48,10 +51,12 @@ export default {
         .then(response => {
           if (response.data.data) {
             this.wordDefinition = response.data.data;
-            this.audioControl = true;
+            this.hasWordDefinition = true;
+            this.progressShow = false;
           } else {
             this.wordDefinition = {};
-            this.audioControl = false;
+            this.hasWordDefinition = false;
+            this.progressShow = false;
           }
         });
     }
@@ -66,11 +71,38 @@ export default {
 }
 
 .search-form {
-  margin: 0 auto;
-  padding: 30px;
+  margin: 48px auto 0 auto;
+  max-width: 300px;
 }
 
 .content {
   text-align: left;
+}
+
+.word {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.meaning {
+  padding: 3px 6px;
+  display: inline-block;
+  border-radius: 30px;
+  background-color: #1b951b;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+audio {
+  height: 42px;
+}
+
+.tag {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.card-footer:hover {
+  opacity: 0.8;
 }
 </style>>
