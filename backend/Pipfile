@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "==1.4.*"
+flake8 = "==3.7.*"
+
+[packages]
+flask = "==1.1.*"
+flask-cors = "==3.0.*"
+flask-api = "==1.*"
+requests = "==2.22.*"
+beautifulsoup4 = "==4.8.*"
+lxml = "==4.4.*"
+
+[requires]
+python_version = "3.7"
+
+[scripts]
+start = "python main.py runserver"
