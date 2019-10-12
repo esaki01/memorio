@@ -103,6 +103,14 @@ audio {
 }
 
 .card-footer:hover {
-  opacity: 0.8;
+  transform: translateY(-1px);
+  box-shadow: 0 1px 1px rgba(50,50,93,.1), 0 1px 3px rgba(0,0,0,.08);
+  opacity: 0.7;
 }
+
+.card-footer:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
 </style>>
