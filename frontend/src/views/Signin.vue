@@ -1,7 +1,8 @@
 <template>
   <div class="signin">
-    <progress class="progress is-small is-primary" max="100" v-if="isSuccessShow">15%</progress>
     <div class="notification is-danger" v-if="isErrorShow">{{ errorMsg }}</div>
+    <progress class="progress is-small is-primary" max="100" v-if="isSuccessShow">15%</progress>
+    <div style="height: 12px;" v-else></div>
 
     <div class="form">
       <div class="field">
@@ -133,7 +134,7 @@ export default {
 @import "~bulma-divider";
 
 .form {
-  margin: 50px auto 0 auto;
+  margin: 48px auto 0 auto;
   max-width: 400px;
   border: 1px solid lightgray;
   border-radius: 5px;
