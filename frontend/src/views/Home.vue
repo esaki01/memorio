@@ -4,23 +4,19 @@
       <header class="card-header">
         <div class="field has-addons search-form">
           <div class="control">
-            <input class="input" type="text" placeholder="Find a word" />
+            <input class="input" type="text" placeholder="Find a word" v-model="keyword" />
           </div>
           <div class="control">
-            <a class="button">Search</a>
+            <a class="button" @click="search">Search</a>
           </div>
         </div>
       </header>
       <div class="card-content">
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-          <a
-            href="#"
-          >@bulmaio</a>.
-          <a href="#">#css</a>
-          <a href="#">#responsive</a>
-          <br />
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          <p>word: {{ wordDefinition.word }}</p>
+          <p>meaning: {{ wordDefinition.meaning }}</p>
+          <p>phonetic symbol: {{ wordDefinition.phonetic_symbol }}</p>
+          <audio :src="wordDefinition.audio_url" v-if="audioControl" controls></audio>
         </div>
       </div>
       <footer class="card-footer">
@@ -32,6 +28,37 @@
   </div>
 </template>
 
+<script>
+import axios from "axios";
+
+export default {
+  data: function() {
+    return {
+      keyword: "",
+      wordDefinition: {},
+      audioControl: false
+    };
+  },
+  methods: {
+    search: function() {
+      axios
+        .get("https://backend-o5x5u66yaq-uc.a.run.app/weblio/search", {
+          params: { keyword: this.keyword }
+        })
+        .then(response => {
+          if (response.data.data) {
+            this.wordDefinition = response.data.data;
+            this.audioControl = true;
+          } else {
+            this.wordDefinition = {};
+            this.audioControl = false;
+          }
+        });
+    }
+  }
+};
+</script>>
+
 <style scoped>
 .card {
   max-width: 600px;
@@ -41,5 +68,9 @@
 .search-form {
   margin: 0 auto;
   padding: 30px;
+}
+
+.content {
+  text-align: left;
 }
 </style>>
