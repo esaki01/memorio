@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import firebase from 'firebase'
-import secrets from '../config/secrets'
+import secrets from '../config/secrets.js'
 
 Vue.config.productionTip = false
 
