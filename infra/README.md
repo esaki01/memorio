@@ -1,23 +1,28 @@
-# infra
+# memorio/infra
 
-## Project setup
+## Environments
+- Public Cloud: Google Cloud Platform
+- Provisioning: Terraform
+
+## Project usage
+### Setup project
 ```
 $ cd src
 $ terraform init
 ```
 
-## Select gcp project
+### Select gcp project
 ```
 $ terraform workspace list
 $ terraform workspace select ${ENV}
 ```
 
-## Confirm changes
+### Confirm changes
 ```
 $ terraform plan
 ```
 
-## Change resources
+### Change resources
 ```
 $ terraform apply
 ```
