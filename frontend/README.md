@@ -1,4 +1,5 @@
 # memorio/frontend
+Frontend application of memorio.
 
 ## Environments
 - Programming language: JavaScript, HTML, CSS
@@ -6,21 +7,35 @@
 - Platform: Node.js
 - Web server: nginx
 
-## Project usage
-### Local
+## Project setup
 ```
-# Setup project
-$ make setup
-
-# Run application
-$ make run
+# install requirements
+$ npm install
 ```
 
 ### Container
 ```
-# Build image
-$ make container-build
+# build docker image
+$ docker build -t $(DOCKER_TAG_NAME) .
+```
 
-# Run container
-$ make container-run
+## Run application
+```
+# compiles and hot-reloads
+$ npm run serve
+```
+
+### Container
+```
+# run docker container
+$ docker container run -p 5000:5000 $(DOCKER_TAG_NAME)
+```
+
+## Others
+```
+# compiles and minifies
+$ npm run build
+
+# lint
+$ npm run lint
 ```
