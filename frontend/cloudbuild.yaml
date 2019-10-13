@@ -8,7 +8,7 @@ steps:
       - --location=global
       - --keyring=secrets
       - --key=firebase
-    id: decryptkey
+    id: decrypt key
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -27,6 +27,8 @@ steps:
       - 'frontend'
       - '--image'
       - 'gcr.io/${_PROJECT_ID}/memorio/frontend'
+      - '--platform'
+      - 'managed'
       - '--region'
       - 'us-central1'
     id: 'deploy application'
