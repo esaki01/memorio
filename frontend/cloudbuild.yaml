@@ -6,18 +6,18 @@ steps:
       - --ciphertext-file=./frontend/config/secrets.js.encrypted
       - --plaintext-file=./frontend/config/secrets.js
       - --location=global
-      - --keyring=secrets
-      - --key=firebase
+      - --keyring=secrets-key-ring
+      - --key=firebase-key
     id: decrypt key
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/${_PROJECT_ID}/memorio/frontend'
+      - 'gcr.io/${_GCP_PROJECT_ID}/memorio/frontend'
       - './frontend/'
     id: 'build docker image'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ["push", "gcr.io/${_PROJECT_ID}/memorio/frontend"]
+    args: ["push", "gcr.io/${_GCP_PROJECT_ID}/memorio/frontend"]
     id: 'push docker image'
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -26,7 +26,7 @@ steps:
       - 'deploy'
       - 'frontend'
       - '--image'
-      - 'gcr.io/${_PROJECT_ID}/memorio/frontend'
+      - 'gcr.io/${_GCP_PROJECT_ID}/memorio/frontend'
       - '--platform'
       - 'managed'
       - '--region'
