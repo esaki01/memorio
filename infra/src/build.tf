@@ -11,6 +11,7 @@ resource "google_cloudbuild_trigger" "frontend-deploy" {
   ]
 
   substitutions = {
+    _GCP_PROJECT_ID = "${data.google_project.project.project_id}"
   }
 
   filename = "frontend/cloudbuild.yaml"

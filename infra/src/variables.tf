@@ -32,6 +32,7 @@ variable "service" {
     "logging.googleapis.com",
     "pubsub.googleapis.com",
     "storage-api.googleapis.com",
-    "identitytoolkit.googleapis.com"
+    "identitytoolkit.googleapis.com",
+    "cloudkms.googleapis.com"
   ]
 }
