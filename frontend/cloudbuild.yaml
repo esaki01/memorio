@@ -1,0 +1,32 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - kms
+      - decrypt
+      - --ciphertext-file=./frontend/config/secrets.js.encrypted
+      - --plaintext-file=./frontend/config/secrets.js
+      - --location=global
+      - --keyring=secrets
+      - --key=firebase
+    id: decryptkey
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/${_PROJECT_ID}/memorio/frontend'
+      - './frontend/'
+    id: 'build docker image'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["push", "gcr.io/${_PROJECT_ID}/memorio/frontend"]
+    id: 'push docker image'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'beta'
+      - 'run'
+      - 'deploy'
+      - 'frontend'
+      - '--image'
+      - 'gcr.io/${_PROJECT_ID}/memorio/frontend'
+      - '--region'
+      - 'us-central1'
+    id: 'deploy application'
