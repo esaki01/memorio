@@ -19,7 +19,7 @@
         <div class="content">
           <p>
             <span class="word">{{ wordDefinition.word }}</span>
-            [{{ wordDefinition.phonetic_symbol }}]
+            {{ wordDefinition.phonetic_symbol }}
           </p>
           <p class="tag is-success">meaning</p>
           <p>{{ wordDefinition.meaning }}</p>
@@ -58,6 +58,12 @@ export default {
         .then(response => {
           if (response.data.data) {
             this.wordDefinition = response.data.data;
+
+            if (this.wordDefinition.phonetic_symbol) {
+              this.wordDefinition.phonetic_symbol = "[" + this.wordDefinition.phonetic_symbol + "]"
+            }
+            this.wordDefinition.phonetic_symbol
+            
             this.hasWordDefinition = true;
             this.progressShow = false;
           } else {
