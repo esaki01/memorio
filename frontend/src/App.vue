@@ -33,14 +33,10 @@ export default {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: #ffffff;
 }
 
 main {
   flex: 1;
-}
-
-a {
-  font-weight: 500;
-  color: #333333;
 }
 </style>

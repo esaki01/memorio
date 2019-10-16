@@ -3,67 +3,77 @@
     <div class="notification is-danger" v-if="isErrorShow">{{ errorMsg }}</div>
     <progress class="progress is-small is-primary" max="100" v-if="isSuccessShow">15%</progress>
     <div style="height: 12px;" v-else></div>
+    <div class="columns level">
+      <div class="column is-2"></div>
+      <div class="column is-4 level-left">
+        <p class="home-title">Platform for<br/>English learners</p>
+        <p class="home-sub">Get started for free!<br/>A vocabulary notebook<br/>created by English learners</p>
+      </div>
+      <div class="column is-4 level-right">
+        <div class="form">
+          <div class="field">
+            <label class="label">Sign in to memorio</label>
 
-    <div class="form">
-      <div class="field">
-        <label class="label">Sign in to memorio</label>
+            <div class="field">
+              <p class="control">
+                <a class="button is-fullwidth is-danger" @click="signinWithGoogle">
+                  <span class="icon">
+                    <i class="fa fa-google"></i>
+                  </span>
+                  <span>Sign in with Google</span>
+                </a>
+              </p>
+            </div>
 
-        <div class="field">
-          <p class="control">
-            <a class="button is-fullwidth is-danger" @click="signinWithGoogle">
-              <span class="icon">
-                <i class="fa fa-google"></i>
+            <div class="field">
+              <p class="control">
+                <a class="button is-fullwidth is-info" @click="signinWithTwitter">
+                  <span class="icon">
+                    <i class="fa fa-twitter"></i>
+                  </span>
+                  <span>Sign in with Twitter</span>
+                </a>
+              </p>
+            </div>
+
+            <div class="is-divider" data-content="OR"></div>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="Email" v-model="email" />
+              <span class="icon is-left">
+                <i class="fa fa-envelope"></i>
               </span>
-              <span>Sign in with Google</span>
-            </a>
-          </p>
-        </div>
-
-        <div class="field">
-          <p class="control">
-            <a class="button is-fullwidth is-info" @click="signinWithTwitter">
-              <span class="icon">
-                <i class="fa fa-twitter"></i>
+              <span class="icon is-right">
+                <i class="fa fa-check"></i>
               </span>
-              <span>Sign in with Twitter</span>
-            </a>
-          </p>
-        </div>
+            </div>
+          </div>
 
-        <div class="is-divider" data-content="OR"></div>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input" type="email" placeholder="Email" v-model="email" />
-          <span class="icon is-left">
-            <i class="fa fa-envelope"></i>
-          </span>
-          <span class="icon is-right">
-            <i class="fa fa-check"></i>
-          </span>
+          <div class="field">
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="password" placeholder="Password" v-model="password" />
+              <span class="icon is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+              <span class="icon is-right">
+                <i class="fa fa-check"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <p class="control">
+              <a class="button is-fullwidth is-success" @click="signin">Sign in</a>
+            </p>
+            <p class="not-have">
+              <span>New to memorio? </span>
+              <a>
+                <router-link to="/signup">Create an account</router-link>
+              </a>.
+            </p>
+          </div>
         </div>
       </div>
-
-      <div class="field">
-        <div class="control has-icons-left has-icons-right">
-          <input class="input" type="password" placeholder="Password" v-model="password" />
-          <span class="icon is-left">
-            <i class="fa fa-lock"></i>
-          </span>
-          <span class="icon is-right">
-            <i class="fa fa-check"></i>
-          </span>
-        </div>
-      </div>
-
-      <div class="field">
-        <p class="control">
-          <a class="button is-fullwidth is-success" @click="signin">Sign in</a>
-        </p>
-        <p class="not-have">
-          <a>
-            <router-link to="/signup">You don't have an account?</router-link>
-          </a>
-        </p>
-      </div>
+      <div class="column is-2"></div>
     </div>
   </div>
 </template>
@@ -133,28 +143,62 @@ export default {
 <style scoped>
 @import "~bulma-divider";
 
-.form {
+.columns {
   margin: 48px auto 0 auto;
+}
+
+.form {
   max-width: 400px;
   border: 1px solid lightgray;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 3px lightgray;
+  margin: auto;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+a {
+  font-weight: bolder;
 }
 
 .not-have {
   margin-top: 20px;
+  font-weight: 500;
 }
 
-.not-have a {
+.not-have a{
+  color: #3173DC;
+  font-weight: 500;
+}
+
+.not-have a:hover{
   text-decoration: underline;
-}
-
-.not-have a:hover {
-  opacity: 0.8;
 }
 
 .label {
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.home-title {
+  font-size: 52px;
+  font-weight: bolder;
+  color: #1B951B;
+  text-align: left;
+  line-height: 60px;
+  margin: auto;
+  max-width: 400px;
+}
+
+.home-sub {
+  font-size: 28px;
+  font-weight: bolder;
+  color: #666666;
+  text-align: left;
+  line-height: 40px;
+  margin: 10px auto 0 auto;
+  max-width: 400px;
 }
 </style>

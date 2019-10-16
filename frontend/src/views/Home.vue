@@ -7,7 +7,11 @@
         <input class="input" type="text" placeholder="Find a word" v-model="keyword" />
       </div>
       <div class="control">
-        <a class="button" @click="search">Search</a>
+        <a class="button" @click="search">
+          <span class="icon">
+            <i class="fa fa-search"></i>
+          </span>
+        </a>
       </div>
     </div>
     <div class="card" v-if="hasWordDefinition">
@@ -43,7 +47,10 @@ export default {
   },
   methods: {
     search: function() {
-      this.progressShow = true;
+      if (this.keyword) {
+        this.progressShow = true;
+      }
+      
       axios
         .get("https://backend-o5x5u66yaq-uc.a.run.app/weblio/search", {
           params: { keyword: this.keyword }
@@ -104,7 +111,7 @@ audio {
 
 .card-footer:hover {
   transform: translateY(-1px);
-  box-shadow: 0 1px 1px rgba(50,50,93,.1), 0 1px 3px rgba(0,0,0,.08);
+  box-shadow: 0 1px 1px rgba(50, 50, 93, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   opacity: 0.7;
 }
 
@@ -113,4 +120,7 @@ audio {
   box-shadow: none;
 }
 
+a {
+  color: #333333;
+}
 </style>>

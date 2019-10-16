@@ -7,3 +7,15 @@
       </div>
   </footer>
 </template>
+
+<style scoped>
+.footer {
+  background-color: #F6F8FA;
+  height: 30px;
+  margin-top: 30px;
+}
+
+a {
+  font-size: 14px;
+}
+</style>

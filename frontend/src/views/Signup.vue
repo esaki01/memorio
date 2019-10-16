@@ -36,11 +36,6 @@
         <p class="control">
           <a class="button is-fullwidth is-success" @click="signup">Sign up</a>
         </p>
-        <p class="sign-in-now">
-          <a>
-            <router-link to="/signin">Sign in now!</router-link>
-          </a>
-        </p>
       </div>
     </div>
   </div>
@@ -79,6 +74,10 @@ export default {
 </script>
 
 <style scoped>
+a {
+  font-weight: bolder;
+}
+
 .form {
   margin: 50px auto 0 auto;
   max-width: 400px;
@@ -86,22 +85,17 @@ export default {
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 3px lightgray;
+  text-align: center;
+  background-color: #ffffff;
 }
 
 .sign-in-now {
   margin-top: 20px;
 }
 
-.sign-in-now a {
-  color: #333333;
-  text-decoration: underline;
-}
-
-.sign-in-now a:hover {
-  opacity: 0.8;
-}
-
 .label {
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 500;
 }
 </style>
