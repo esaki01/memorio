@@ -10,7 +10,6 @@ class WeblioService:
     WEBLIO_SITE_URL = 'https://ejje.weblio.jp/'
 
     def get_word_definition(self, keyword: str) -> Optional[WordDefinition]:
-
         response = requests.get(f'{self.WEBLIO_SITE_URL}/content/{keyword}')
 
         if not response:
@@ -19,18 +18,15 @@ class WeblioService:
         soup = BeautifulSoup(response.text, 'lxml')
 
         fields = {
-            'word': soup.find(id='h1Query'),
-            'meaning': soup.select_one('td.content-explanation'),
-            'phonetic_symbol': soup.select_one('span.phoneticEjjeDesc'),
+            'word': soup.find(id='h1Query').string,
+            'meaning': soup.select_one('td.content-explanation').string,
+            'phonetic_symbol': soup.select('span.phoneticEjjeDesc')[-1].string,
             'audio_url': soup.select_one("audio.contentAudio")
         }
 
-        for v in fields.values():
-            if not v:
-                break
-        else:
+        if fields['word'] and fields['meaning']:
             return WordDefinition(
-                word=fields['word'].string,
-                meaning=fields['meaning'].string,
-                phonetic_symbol=fields['phonetic_symbol'].string,
+                word=fields['word'],
+                meaning=fields['meaning'],
+                phonetic_symbol=fields['phonetic_symbol'],
                 audio_url=fields['audio_url'].contents[0].attrs['src'])
