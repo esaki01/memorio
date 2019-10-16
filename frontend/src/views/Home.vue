@@ -65,6 +65,12 @@ export default {
             this.hasWordDefinition = false;
             this.progressShow = false;
           }
+        })
+        .catch(error => {
+          this.wordDefinition = {};
+          this.hasWordDefinition = false;
+          this.progressShow = false;
+          console.log(error)
         });
     }
   }
