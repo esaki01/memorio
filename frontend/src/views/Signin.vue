@@ -3,13 +3,8 @@
     <div class="notification is-danger" v-if="isErrorShow">{{ errorMsg }}</div>
     <progress class="progress is-small is-primary" max="100" v-if="isSuccessShow">15%</progress>
     <div style="height: 12px;" v-else></div>
-    <div class="columns level">
-      <div class="column is-2"></div>
-      <div class="column is-4 level-left">
-        <p class="home-title">Platform for<br/>English learners</p>
-        <p class="home-sub">Get started for free!<br/>A vocabulary notebook<br/>created by English learners</p>
-      </div>
-      <div class="column is-4 level-right">
+    <div class="columns level reverse-row-order">
+      <div class="column is-6 level-right">
         <div class="form">
           <div class="field">
             <label class="label">Sign in to memorio</label>
@@ -73,7 +68,10 @@
           </div>
         </div>
       </div>
-      <div class="column is-2"></div>
+      <div class="column is-6 level-left">
+        <p class="home-title">Platform for<br/>English learners</p>
+        <p class="home-sub">Get started for free!<br/>A vocabulary notebook<br/>created by English learners</p>
+      </div>
     </div>
   </div>
 </template>
@@ -188,7 +186,7 @@ a {
   color: #1B951B;
   text-align: left;
   line-height: 60px;
-  margin: auto;
+  margin: 50px auto 0 auto;
   max-width: 400px;
 }
 
@@ -198,7 +196,12 @@ a {
   color: #666666;
   text-align: left;
   line-height: 40px;
-  margin: 10px auto 0 auto;
+  margin: 10px auto 50px auto;
   max-width: 400px;
+}
+
+.reverse-row-order {
+  flex-direction: row-reverse;
+  max-width: 980px;
 }
 </style>
