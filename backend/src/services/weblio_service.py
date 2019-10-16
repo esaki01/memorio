@@ -20,7 +20,7 @@ class WeblioService:
         fields = {
             'word': soup.find(id='h1Query').string,
             'meaning': soup.select_one('td.content-explanation').string,
-            'phonetic_symbol': soup.select('span.phoneticEjjeDesc')[-1].string,
+            'phonetic_symbol': soup.select('span.phoneticEjjeDesc'),
             'audio_url': soup.select_one("audio.contentAudio")
         }
 
@@ -28,5 +28,5 @@ class WeblioService:
             return WordDefinition(
                 word=fields['word'],
                 meaning=fields['meaning'],
-                phonetic_symbol=fields['phonetic_symbol'],
+                phonetic_symbol=fields['phonetic_symbol'][-1].string if fields['phonetic_symbol'] else None,
                 audio_url=fields['audio_url'].contents[0].attrs['src'])
