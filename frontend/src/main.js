@@ -11,9 +11,7 @@ const config = {
     apiKey: secrets.apiKey,
     authDomain: secrets.authDomain,
     databaseURL: secrets.databaseURL,
-    projectId: secrets.projectId,
-    storageBucket: secrets.storageBucket,
-    messagingSenderId: secrets.messagingSenderId
+    projectId: secrets.projectId
 }
 
 firebase.initializeApp(config)
