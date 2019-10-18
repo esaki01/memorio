@@ -21,4 +21,5 @@ steps:
       - 'managed'
       - '--region'
       - 'us-central1'
+      - '--allow-unauthenticated'
     id: 'deploy application'
