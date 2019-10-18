@@ -7,7 +7,7 @@ resource "google_cloudbuild_trigger" "frontend-deploy" {
   }
 
   included_files = [
-    "frontend/**"
+    "frontend/**",
   ]
 
   substitutions = {
@@ -26,7 +26,7 @@ resource "google_cloudbuild_trigger" "backend-deploy" {
   }
 
   included_files = [
-    "backend/**"
+    "backend/**",
   ]
 
   substitutions = {
