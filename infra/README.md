@@ -26,8 +26,11 @@ $ terraform plan
 $ terraform apply
 ```
 
-## Others
+## Encrypt secrets
 ```
-# encrypt secrets by kms api
-$ gcloud kms encrypt --location global --keyring secrets-key-ring --key firebase-key --plaintext-file secrets.js --ciphertext-file secrets.js.encrypted
+# encrypt secrets file by kms api
+$ gcloud kms encrypt --location us-central1 --keyring secrets-key-ring --key secrets-key --plaintext-file secrets.js --ciphertext-file secrets.js.encrypted
+
+# encript secrets string by kms api
+$ echo -n <secret-string> | gcloud kms encrypt --location us-central1 --keyring secrets-key-ring --key secrets-key --plaintext-file - --ciphertext-file - | base64
 ```
