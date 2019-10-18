@@ -52,7 +52,7 @@ export default {
       }
       
       axios
-        .get("https://backend-o5x5u66yaq-uc.a.run.app/weblio/search", {
+        .get("https://backend-w47fosvaeq-uc.a.run.app/weblio/search", {
           params: { keyword: this.keyword }
         })
         .then(response => {
