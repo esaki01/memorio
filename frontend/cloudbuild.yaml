@@ -5,9 +5,9 @@ steps:
       - decrypt
       - --ciphertext-file=./frontend/config/secrets.js.encrypted
       - --plaintext-file=./frontend/config/secrets.js
-      - --location=global
+      - --location=us-central1
       - --keyring=secrets-key-ring
-      - --key=firebase-key
+      - --key=secrets-key
     id: decrypt key
   - name: 'gcr.io/cloud-builders/docker'
     args:
