@@ -23,10 +23,10 @@
 
     <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <a class="navbar-item" v-if="user.uid">
           <router-link to="/">Home</router-link>
         </a>
-        <a class="navbar-item">
+        <a class="navbar-item" v-if="user.uid">
           <router-link to="/vocabulary">Vocabulary</router-link>
         </a>
       </div>
