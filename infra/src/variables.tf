@@ -2,7 +2,7 @@ variable "project_number" {
   type = "map"
 
   default = {
-    dev = "253807"
+    dev = "256321"
   }
 }
 
@@ -19,14 +19,6 @@ variable "credential" {
 
   default = {
     dev = "../config/credentials/dev.json"
-  }
-}
-
-variable "mysql" {
-  type = "map"
-
-  default = {
-    password = "CiQAd+zGhZ5c+Y5DJEkZc+gxjueTdXWGB/csH4lIT4hoW/Mr6UESNADvaGnVFFwnXDBD/S9AscKTUGrEZJgUnZHxwfbdcYd4/txQRZKkIW/sJ9BDu0JXAe6W89w="
   }
 }
 
