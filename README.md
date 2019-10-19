@@ -2,11 +2,13 @@
 An application to store vocabulary of English.
 
 ## Project setup
-- backend: [backend/README.md](backend/README.md)
-- frontend: [frontend/README.md](frontend/README.md)
-- infra: [infra/README.md](infra/README.md)
+- backend (Python/Flask) : [backend/README.md](backend/README.md)
+- frontend (JavaScript/Vue.js) : [frontend/README.md](frontend/README.md)
+- infra (Terraform) : [infra/README.md](infra/README.md)
 
 ## Deploy application
+Deployed on Google Cloud Run.
+
 ```
 # backend
 $ make deploy-backend
