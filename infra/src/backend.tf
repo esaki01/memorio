@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
-    project = "memorio-255615"
-    bucket  = "memorio-terraform-backend"
+    project = "parrot-256517"
+    bucket  = "parrot-terraform-backend"
     prefix  = ""
   }
 }

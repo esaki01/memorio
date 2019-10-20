@@ -1,10 +1,10 @@
 # project variables
-GCP_PROJECT_ID=memorio-256321
+GCP_PROJECT_ID=parrot-256516
 
 # cloud run variables
 CLOUD_RUN_REGION=us-central1
-BACKEND_TAG_NAME=memorio/backend
-FRONTEND_TAG_NAME=memorio/frontend
+BACKEND_TAG_NAME=parrot/backend
+FRONTEND_TAG_NAME=parrot/frontend
 
 .PHONY: deploy-backend # Deploy backend
 deploy-backend:

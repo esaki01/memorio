@@ -3,11 +3,11 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/${_GCP_PROJECT_ID}/memorio/backend'
+      - 'gcr.io/${_GCP_PROJECT_ID}/parrot/backend'
       - './backend/'
     id: 'build docker image'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ["push", "gcr.io/${_GCP_PROJECT_ID}/memorio/backend"]
+    args: ["push", "gcr.io/${_GCP_PROJECT_ID}/parrot/backend"]
     id: 'push docker image'
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -16,7 +16,7 @@ steps:
       - 'deploy'
       - 'backend'
       - '--image'
-      - 'gcr.io/${_GCP_PROJECT_ID}/memorio/backend'
+      - 'gcr.io/${_GCP_PROJECT_ID}/parrot/backend'
       - '--platform'
       - 'managed'
       - '--region'
