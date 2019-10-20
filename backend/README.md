@@ -1,5 +1,5 @@
-# memorio/backend
-Backend application of memorio.
+# parrot/backend
+Backend application of parrot.
 
 ## Environments
 - Programming language: Python 3.7

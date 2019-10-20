@@ -1,5 +1,5 @@
-# memorio/frontend
-Frontend application of memorio.
+# parrot/frontend
+Frontend application of parrot.
 
 ## Environments
 - Programming language: JavaScript, HTML, CSS

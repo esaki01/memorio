@@ -1,5 +1,5 @@
-# memorio/infra
-Cloud infrastructure of memorio.
+# parrot/infra
+Cloud infrastructure of parrot.
 
 ## Environments
 - Public Cloud: Google Cloud Platform

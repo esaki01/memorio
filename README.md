@@ -1,5 +1,5 @@
-# memorio
-An application to store vocabulary of English.
+# parrot
+An application to practice parrot's law.
 
 ## Project setup
 - backend (Python/Flask) : [backend/README.md](backend/README.md)
