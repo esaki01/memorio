@@ -10,6 +10,6 @@ def create_app() -> Flask:
     app.register_blueprint(weblio)
 
     # TODO add production origin
-    CORS(app, origins=['http://localhost:8080/*', 'https://frontend-w47fosvaeq-uc.a.run.app'])
+    CORS(app, origins=['http://localhost:8080/*', 'https://frontend-n2zzz72gsq-uc.a.run.app'])
 
     return app
