@@ -1,138 +1,232 @@
 <template>
-  <div class="home">
-    <progress class="progress is-small is-primary" max="100" v-if="progressShow">15%</progress>
-    <div style="height: 12px;" v-else></div>
-    <div class="field has-addons search-form">
-      <div class="control">
-        <input class="input" type="text" placeholder="Find a word" v-model="keyword" />
-      </div>
-      <div class="control">
-        <a class="button" @click="search">
-          <span class="icon">
-            <i class="fa fa-search"></i>
-          </span>
-        </a>
-      </div>
-    </div>
-    <div class="card" v-if="hasWordDefinition">
-      <div class="card-content">
-        <div class="content">
-          <p>
-            <span class="word">{{ wordDefinition.word }}</span>
-            {{ wordDefinition.phonetic_symbol }}
-          </p>
-          <p class="tag is-success">meaning</p>
-          <p>{{ wordDefinition.meaning }}</p>
-          <audio :src="wordDefinition.audio_url" controls></audio>
+  <div class="home container">
+    <div class="search-form">
+      <h1>Search</h1>
+      <div class="field has-addons">
+        <div class="control">
+          <input class="input is-rounded" type="text" placeholder="Search the song lyrics" />
+        </div>
+        <div class="control">
+          <a class="button is-rounded">
+            <span class="icon">
+              <i class="fa fa-search"></i>
+            </span>
+          </a>
         </div>
       </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Register</a>
-      </footer>
+      <h2>Trending</h2>
+      <div class="trending-box">
+        <div class="tags">
+          <span class="tag">One</span>
+          <span class="tag">Two</span>
+          <span class="tag">Three</span>
+          <span class="tag">Four</span>
+          <span class="tag">Five</span>
+          <span class="tag">Six</span>
+          <span class="tag">Seven</span>
+          <span class="tag">Eight</span>
+          <span class="tag">Nine</span>
+          <span class="tag">Ten</span>
+          <span class="tag">Eleven</span>
+          <span class="tag">Twelve</span>
+          <span class="tag">Thirteen</span>
+          <span class="tag">Fourteen</span>
+          <span class="tag">Fifteen</span>
+          <span class="tag">Sixteen</span>
+          <span class="tag">Seventeen</span>
+          <span class="tag">Eighteen</span>
+          <span class="tag">Nineteen</span>
+          <span class="tag">Twenty</span>
+        </div>
+      </div>
+      <h2>Recommended</h2>
+      <div class="recommended-box">
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>John Smith</strong>
+                  <small>@johnsmith</small>
+                  <small>31m</small>
+                  <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item" aria-label="reply">
+                    <span class="icon is-small">
+                      <i class="fa fa-reply" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="retweet">
+                    <span class="icon is-small">
+                      <i class="fa fa-retweet" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="like">
+                    <span class="icon is-small">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </article>
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>John Smith</strong>
+                  <small>@johnsmith</small>
+                  <small>31m</small>
+                  <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item" aria-label="reply">
+                    <span class="icon is-small">
+                      <i class="fa fa-reply" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="retweet">
+                    <span class="icon is-small">
+                      <i class="fa fa-retweet" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="like">
+                    <span class="icon is-small">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </article>
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>John Smith</strong>
+                  <small>@johnsmith</small>
+                  <small>31m</small>
+                  <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item" aria-label="reply">
+                    <span class="icon is-small">
+                      <i class="fa fa-reply" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="retweet">
+                    <span class="icon is-small">
+                      <i class="fa fa-retweet" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="like">
+                    <span class="icon is-small">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </article>
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>John Smith</strong>
+                  <small>@johnsmith</small>
+                  <small>31m</small>
+                  <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item" aria-label="reply">
+                    <span class="icon is-small">
+                      <i class="fa fa-reply" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="retweet">
+                    <span class="icon is-small">
+                      <i class="fa fa-retweet" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                  <a class="level-item" aria-label="like">
+                    <span class="icon is-small">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-import axios from "axios";
-
-export default {
-  data: function() {
-    return {
-      keyword: "",
-      wordDefinition: {},
-      hasWordDefinition: false,
-      progressShow: false
-    };
-  },
-  methods: {
-    search: function() {
-      if (this.keyword) {
-        this.progressShow = true;
-      }
-      
-      axios
-        .get("https://backend-w47fosvaeq-uc.a.run.app/weblio/search", {
-          params: { keyword: this.keyword }
-        })
-        .then(response => {
-          if (response.data.data) {
-            this.wordDefinition = response.data.data;
-
-            if (this.wordDefinition.phonetic_symbol) {
-              this.wordDefinition.phonetic_symbol = "[" + this.wordDefinition.phonetic_symbol + "]"
-            }
-            this.wordDefinition.phonetic_symbol
-            
-            this.hasWordDefinition = true;
-            this.progressShow = false;
-          } else {
-            this.wordDefinition = {};
-            this.hasWordDefinition = false;
-            this.progressShow = false;
-          }
-        })
-        .catch(error => {
-          this.wordDefinition = {};
-          this.hasWordDefinition = false;
-          this.progressShow = false;
-          console.log(error)
-        });
-    }
-  }
-};
-</script>>
-
 <style scoped>
-.card {
-  max-width: 600px;
-  margin: 50px auto 0 auto;
-}
-
-.search-form {
-  margin: 48px auto 0 auto;
-  max-width: 300px;
-}
-
-.content {
+h1 {
+  margin: 32px auto 8px auto;
+  color: #F14667;
+  font-size: 24px;
+  font-weight: bolder;
   text-align: left;
 }
 
-.word {
-  font-size: 24px;
-  font-weight: bolder;
-}
-
-.meaning {
-  padding: 3px 6px;
-  display: inline-block;
-  border-radius: 30px;
-  background-color: #1b951b;
-  color: #ffffff;
-  font-weight: bolder;
-}
-
-audio {
-  height: 42px;
-}
-
-.tag {
-  font-size: 14px;
-  font-weight: bolder;
-}
-
-.card-footer:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 1px 1px rgba(50, 50, 93, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  opacity: 0.7;
-}
-
-.card-footer:active {
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-a {
+h2 {
+  margin: 24px auto;
   color: #333333;
+  font-size: 16px;
+  font-weight: bolder;
+  text-align: left;
+}
+
+.home {
+  padding: 0.75rem;
+}
+
+.search-form {
+  margin: auto;
+  max-width: 800px;
+}
+
+.fa-search {
+  color: #FA4667;
+}
+
+input {
+  width: 280px;
+}
+
+.trending-box {
+  margin-bottom: 16px;
 }
 </style>>

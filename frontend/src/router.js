@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Signin from './views/Signin.vue'
 import Signup from './views/Signup.vue'
-import Vocabulary from './views/Vocabulary.vue'
+import Library from './views/Library.vue'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -14,13 +14,12 @@ let router = new Router({
     routes: [{
             path: '/',
             name: 'home',
-            component: Home,
-            meta: { requiresAuth: true }
+            component: Home
         },
         {
-            path: '/vocabulary',
-            name: 'vocabulary',
-            component: Vocabulary,
+            path: '/library',
+            name: 'library',
+            component: Library,
             meta: { requiresAuth: true }
         },
         {

@@ -3,7 +3,7 @@
     <div class="navbar-brand">
       <a class="navbar-item">
         <router-link to="/">
-          <img alt="logo" src="@/assets/logo.svg" />
+          <img alt="logo" src="@/assets/logo.svg"/>
         </router-link>
       </a>
       <a
@@ -23,11 +23,11 @@
 
     <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
       <div class="navbar-start">
-        <a class="navbar-item" v-if="user.uid">
+        <a class="navbar-item">
           <router-link to="/">Home</router-link>
         </a>
         <a class="navbar-item" v-if="user.uid">
-          <router-link to="/vocabulary">Vocabulary</router-link>
+          <router-link to="/library">Library</router-link>
         </a>
       </div>
 
@@ -100,6 +100,7 @@ export default {
 nav {
   padding: 10px 0;
   box-shadow: 0 2px whitesmoke;
+  background-color: #ffffff;
 }
 
 .right-navbar-item {
@@ -107,7 +108,7 @@ nav {
 }
 
 a {
-  font-weight: 500;
+  font-weight: 600;
   color: #333333;
 }
 

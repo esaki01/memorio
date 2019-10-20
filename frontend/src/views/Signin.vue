@@ -7,7 +7,7 @@
       <div class="column is-6 level-right">
         <div class="form">
           <div class="field">
-            <label class="label">Sign in to memorio</label>
+            <label class="label">Sign in to PARROT</label>
 
             <div class="field">
               <p class="control">
@@ -60,7 +60,7 @@
               <a class="button is-fullwidth is-success" @click="signin">Sign in</a>
             </p>
             <p class="not-have">
-              <span>New to memorio? </span>
+              <span>New to PARROT? </span>
               <a>
                 <router-link to="/signup">Create an account</router-link>
               </a>.
@@ -69,7 +69,7 @@
         </div>
       </div>
       <div class="column is-6 level-left">
-        <p class="home-title">Platform for<br/>English learners</p>
+        <p class="home-title has-text-danger">Platform for<br/>English learners</p>
         <p class="home-sub">Get started for free!<br/>A vocabulary notebook<br/>created by English learners</p>
       </div>
     </div>
@@ -147,7 +147,6 @@ export default {
 
 .form {
   max-width: 400px;
-  border: 1px solid lightgray;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 3px lightgray;
@@ -183,7 +182,6 @@ a {
 .home-title {
   font-size: 52px;
   font-weight: bolder;
-  color: #1B951B;
   text-align: left;
   line-height: 60px;
   margin: 50px auto 0 auto;

@@ -8,7 +8,7 @@
       <div class="column is-12">
         <div class="form">
           <div class="field">
-            <label class="label">Sign up for memorio</label>
+            <label class="label">Sign up for PARROT</label>
 
             <div class="control has-icons-left has-icons-right">
               <input class="input" type="email" placeholder="Email" v-model="email" />
@@ -89,7 +89,6 @@ a {
 
 .form {
   max-width: 400px;
-  border: 1px solid lightgray;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 3px lightgray;
