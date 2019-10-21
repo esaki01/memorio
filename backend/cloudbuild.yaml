@@ -1,4 +1,14 @@
 steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - kms
+      - decrypt
+      - --ciphertext-file=./backend/config.py.encrypted
+      - --plaintext-file=./backend/config.py
+      - --location=us-central1
+      - --keyring=secrets-key-ring
+      - --key=secrets-key
+    id: decrypt key
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'

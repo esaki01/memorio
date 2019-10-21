@@ -10,6 +10,9 @@
 *.sw?
 __pycache__
 
+# backend
+backend/*config.py
+
 # frontend
 node_modules
 dist

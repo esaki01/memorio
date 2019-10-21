@@ -16,6 +16,8 @@ beautifulsoup4 = "==4.8.*"
 lxml = "==4.4.*"
 pycodestyle = "==2.5.*"
 gunicorn = "==19.9.*"
+spotipy = "*"
+lyricsgenius = "*"
 
 [requires]
 python_version = "3.7"
