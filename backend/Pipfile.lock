@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2834202b0fc5ef8465d0969bd805b8258b04302ee9a10d28c6c61e75d42e4079"
+            "sha256": "fdf511c9db2b48df05a32ea4d7b98dd7d8bed6852b8e1de5af7dcbde34f43792"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,22 +16,14 @@
         ]
     },
     "default": {
-        "backports.functools-lru-cache": {
-            "hashes": [
-                "sha256:9d98697f088eb1b0fa451391f91afb5e3ebde16bbdb272819fd091151fda4f1a",
-                "sha256:f0b0e4eba956de51238e17573b7087e852dfe9854afd2e9c873f73fc0ca0a6dd"
-            ],
-            "markers": "python_version < '3'",
-            "version": "==1.5"
-        },
         "beautifulsoup4": {
             "hashes": [
-                "sha256:5279c36b4b2ec2cb4298d723791467e3000e5384a43ea0cdf5d45207c7e97169",
-                "sha256:6135db2ba678168c07950f9a16c4031822c6f4aec75a65e0a97bc5ca09789931",
-                "sha256:dcdef580e18a76d54002088602eba453eec38ebbcafafeaabd8cab12b6155d57"
+                "sha256:11a9a27b7d3bddc6d86f59fb76afb70e921a25ac2d6cc55b40d072bd68435a76",
+                "sha256:7015e76bf32f1f574636c4288399a6de66ce08fb7b2457f628a8d70c0fbabb11",
+                "sha256:808b6ac932dccb0a4126558f7dfdcf41710dd44a4ef497a0bb59a77f9f078e89"
             ],
             "index": "pypi",
-            "version": "==4.8.1"
+            "version": "==4.6.0"
         },
         "certifi": {
             "hashes": [
@@ -135,6 +127,14 @@
             "index": "pypi",
             "version": "==4.4.1"
         },
+        "lyricsgenius": {
+            "hashes": [
+                "sha256:3e677c6acb5309381b9c46198c47c4ae5f20fcbe3c65a186a207a4fb04c59c4d",
+                "sha256:a8405efc373c5468b35d5c48e85b5edc8d12364cbfe3feed6580741d623b6b33"
+            ],
+            "index": "pypi",
+            "version": "==1.7.0"
+        },
         "markupsafe": {
             "hashes": [
                 "sha256:00bc623926325b26bb9605ae9eae8a215691f33cae5df11ca5424f06f2d1f473",
@@ -190,13 +190,6 @@
                 "sha256:d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"
             ],
             "version": "==1.12.0"
-        },
-        "soupsieve": {
-            "hashes": [
-                "sha256:605f89ad5fdbfefe30cdc293303665eff2d188865d4dbe4eb510bba1edfbfce3",
-                "sha256:b91d676b330a0ebd5b21719cb6e9b57c57d433671f65b9c28dd3461d9a1ed0b6"
-            ],
-            "version": "==1.9.4"
         },
         "spotipy": {
             "hashes": [
