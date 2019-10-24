@@ -37,7 +37,7 @@
       </div>
 
       <div class="search-result" v-if="searchResultShow">
-        <h2>Search results</h2>
+        <h2>Search Results</h2>
         <div class="box">
           <article class="media">
             <div class="media-left">
@@ -47,7 +47,7 @@
             </div>
             <div class="media-content">
               <div class="content">
-                <p>
+                <p class="ellipsis">
                   <strong>{{ data.title }}</strong>
                   / {{ data.artist }}
                   <br />
@@ -98,30 +98,15 @@
                 <div class="media-content">
                   <div class="content">
                     <p>
-                      <strong>{{ l2.artist }}</strong> / {{ l2.title }}
+                      <strong>{{ l2.artist }}</strong>
                       <br />
-                      <a :href="l2.lyrics" target=”_blank”>spotify.com</a>
+                      <a
+                        :href="l2.lyrics"
+                        target="”_blank”"
+                        class="extra-link has-text-link"
+                      >{{ l2.title }}</a>
                     </p>
                   </div>
-                  <nav class="level is-mobile">
-                    <div class="level-left">
-                      <a class="level-item" aria-label="reply">
-                        <span class="icon is-small">
-                          <i class="fa fa-reply" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                      <a class="level-item" aria-label="retweet">
-                        <span class="icon is-small">
-                          <i class="fa fa-retweet" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                      <a class="level-item" aria-label="like">
-                        <span class="icon is-small">
-                          <i class="fa fa-heart" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </div>
-                  </nav>
                 </div>
               </article>
             </div>
@@ -224,6 +209,11 @@ h2 {
   text-align: left;
 }
 
+.extra-link {
+  font-weight: 500;
+  font-size: 14px;
+}
+
 .search-form {
   margin: auto;
   max-width: 1000px;
@@ -236,9 +226,13 @@ h2 {
 }
 
 .media-content {
+}
+
+.ellipsis {
+  position: relative;
+  height: 100px;
+  line-height: 24px;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .trending-box {
