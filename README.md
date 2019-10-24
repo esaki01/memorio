@@ -1,7 +1,8 @@
 # PARROT
-PARROT is a web service will help you learn English by doing "Parrot's Law".
-
 ![image](https://user-images.githubusercontent.com/44774033/67483452-d4fc1000-f6a0-11e9-851c-7f04f0e2de1e.png)
+
+## Overview
+PARROT is a web service will help you learn English by doing "Parrot's Law".
 
 ## What is "Parrot's Law" (called Oumu-no-hosoku in Japanese) ?
 "Parrot's Law" is an English learning method. In short, it is an application of the training method that a parrot uses when learning words.
