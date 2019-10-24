@@ -1,5 +1,5 @@
-# parrot/backend
-Backend application of parrot.
+# PARROT/Backend
+Backend service of PARROT.
 
 ## Environments
 - Programming language: Python 3.7

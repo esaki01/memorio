@@ -1,5 +1,5 @@
-# parrot/frontend
-Frontend application of parrot.
+# PARROT/Frontend
+Frontend service of PARROT.
 
 ## Environments
 - Programming language: JavaScript, HTML, CSS
