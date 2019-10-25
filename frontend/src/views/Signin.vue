@@ -70,7 +70,8 @@
       </div>
       <div class="column is-6 level-left">
         <p class="home-title has-text-danger">Platform for<br/>English learners</p>
-        <p class="home-sub">Get started for free!<br/>A vocabulary notebook<br/>created by English learners</p>
+        <p class="home-sub">Get started for free!<br/>You will be able to understand how to pronounce the words in the song lyrics 
+        </p>
       </div>
     </div>
   </div>
@@ -141,6 +142,10 @@ export default {
 <style scoped>
 @import "~bulma-divider";
 
+.signin {
+  text-align: center;
+}
+
 .columns {
   margin: 48px auto 0 auto;
 }
@@ -177,6 +182,7 @@ a {
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 500;
+  font-weight: bolder;
 }
 
 .home-title {

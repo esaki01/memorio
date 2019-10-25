@@ -79,8 +79,8 @@ export default {
 </script>
 
 <style scoped>
-a {
-  font-weight: bolder;
+.signup {
+  text-align: center;
 }
 
 .columns {
@@ -100,6 +100,6 @@ a {
 .label {
   margin-bottom: 20px;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: bolder;
 }
 </style>

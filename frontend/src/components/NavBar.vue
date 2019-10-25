@@ -3,7 +3,7 @@
     <div class="navbar-brand">
       <a class="navbar-item">
         <router-link to="/">
-          <img alt="logo" src="@/assets/logo.svg"/>
+          <img alt="logo" src="@/assets/logo.svg" />
         </router-link>
       </a>
       <a
@@ -23,21 +23,18 @@
 
     <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
       <div class="navbar-start">
-        <a class="navbar-item">
-          <router-link to="/">Home</router-link>
-        </a>
         <a class="navbar-item" v-if="user.uid">
           <router-link to="/library">Library</router-link>
         </a>
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" v-if="!user.uid">
-          <router-link to="/signin">Sign in</router-link>
-        </a>
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button" v-if="!user.uid">
+            <a class="button is-rounded" v-if="!user.uid">
+              <router-link to="/signin">Sign in</router-link>
+            </a>
+            <a class="button is-rounded" v-if="!user.uid">
               <router-link to="/signup">Sign up</router-link>
             </a>
           </div>
@@ -52,7 +49,6 @@
             <a class="navbar-item">
               <router-link to="/about">About</router-link>
             </a>
-            <a class="navbar-item">Contact</a>
             <hr class="navbar-divider" />
             <a class="navbar-item" @click="signout">
               <router-link to="/signout">Sign out</router-link>
@@ -99,7 +95,7 @@ export default {
 <style scoped>
 nav {
   padding: 10px 0;
-  box-shadow: 0 2px whitesmoke;
+  box-shadow: 0 0 5px 1px rgb(225, 225, 225);
   background-color: #ffffff;
 }
 
@@ -109,10 +105,6 @@ nav {
 
 a {
   font-weight: 600;
-  color: #333333;
-}
-
-.navbar-link {
-  color: #333333;
+  color: #666666;
 }
 </style>

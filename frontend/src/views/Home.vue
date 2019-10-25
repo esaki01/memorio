@@ -2,12 +2,11 @@
   <div class="home">
     <progress class="progress is-small is-primary" max="100" v-if="progressShow">15%</progress>
     <div style="height: 12px;" v-else></div>
-
     <div class="search-form container">
-      <h1>Search</h1>
-      <div class="field is-horizontal">
+      <h1>Search Lyrics</h1>
+      <div class="field is-horizontal is-hidden-tablet">
         <div class="field-body">
-          <div class="field">
+          <div class="field has-addons" v-if="selected === 'Artist Search'">
             <p class="control is-expanded has-icons-left">
               <input
                 class="input"
@@ -20,18 +19,111 @@
               </span>
             </p>
           </div>
-          <div class="field">
-            <p class="control is-expanded has-icons-left has-icons-right">
+          <div class="field has-addons" v-if="selected === 'Song Search'">
+            <p class="control is-expanded has-icons-left">
               <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
               <span class="icon is-small is-left">
                 <i class="fa fa-music"></i>
               </span>
             </p>
           </div>
-          <div class="field">
-            <div class="control">
-              <button class="button is-primary" @click="search">Search lyrics</button>
-            </div>
+          <div class="field has-addons" v-if="selected === 'Artist & Song Search'">
+            <p class="control is-expanded has-icons-left">
+              <input
+                class="input"
+                type="text"
+                placeholder="Artist (e.g. The Beatles)"
+                v-model="artist"
+              />
+              <span class="icon is-small is-left">
+                <i class="fa fa-user-circle"></i>
+              </span>
+            </p>
+            <p class="control is-expanded has-icons-left">
+              <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
+              <span class="icon is-small is-left">
+                <i class="fa fa-music"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field has-addons">
+            <p class="control is-expanded">
+              <span class="select is-fullwidth">
+                <select v-model="selected">
+                  <option>Artist &amp; Song Search</option>
+                  <option>Artist Search</option>
+                  <option>Song Search</option>
+                </select>
+              </span>
+            </p>
+            <p class="control">
+              <a class="button is-primary" @click="search">
+                <span class="fa fa-search has-text-white"></span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal is-hidden-mobile">
+        <div class="field-body">
+          <div class="field has-addons">
+            <p class="control is-expanded has-icons-left" v-if="selected === 'Artist Search'">
+              <input
+                class="input"
+                type="text"
+                placeholder="Artist (e.g. The Beatles)"
+                v-model="artist"
+              />
+              <span class="icon is-small is-left">
+                <i class="fa fa-user-circle"></i>
+              </span>
+            </p>
+            <p class="control is-expanded has-icons-left" v-if="selected === 'Song Search'">
+              <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
+              <span class="icon is-small is-left">
+                <i class="fa fa-music"></i>
+              </span>
+            </p>
+
+            <p
+              class="control is-expanded has-icons-left"
+              v-if="selected === 'Artist & Song Search'"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Artist (e.g. The Beatles)"
+                v-model="artist"
+              />
+              <span class="icon is-small is-left">
+                <i class="fa fa-user-circle"></i>
+              </span>
+            </p>
+            <p
+              class="control is-expanded has-icons-left"
+              v-if="selected === 'Artist & Song Search'"
+            >
+              <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
+              <span class="icon is-small is-left">
+                <i class="fa fa-music"></i>
+              </span>
+            </p>
+
+            <p class="control">
+              <span class="select">
+                <select v-model="selected">
+                  <option>Artist &amp; Song Search</option>
+                  <option>Artist Search</option>
+                  <option>Song Search</option>
+                </select>
+              </span>
+            </p>
+            <p class="control">
+              <a class="button is-primary" @click="search">
+                <span class="fa fa-search has-text-white"></span>
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -41,18 +133,17 @@
         <div class="box">
           <article class="media">
             <div class="media-left">
-              <figure class="image is-64x64">
+              <figure class="image is-128x128">
                 <img :src="src" alt="Image" />
               </figure>
             </div>
             <div class="media-content">
+              <p class="title is-6">
+                {{ data.title }}
+                / {{ data.artist }}
+              </p>
               <div class="content">
-                <p class="ellipsis">
-                  <strong>{{ data.title }}</strong>
-                  / {{ data.artist }}
-                  <br />
-                  {{ data.lyrics }}
-                </p>
+                <p class="ellipsis">{{ data.lyrics }}</p>
               </div>
               <nav class="level is-mobile">
                 <div class="level-left">
@@ -80,35 +171,48 @@
 
       <h2>Trending</h2>
       <div class="trending-box">
-        <div class="tags">
-          <span class="tag" v-for="l in list" :key="l">{{ l }}</span>
+        <content-loader v-bind:width="400" v-bind:height="22" v-if="contentsShow">
+          <rect x="0" y="0" rx="3" ry="3" width="400" height="10" />
+          <rect x="0" y="12" rx="3" ry="3" width="400" height="10" />
+        </content-loader>
+        <div class="tags" v-else>
+          <span class="tag" v-for="tl in trendingList" :key="tl">
+            <span>{{ tl }}</span>
+          </span>
         </div>
       </div>
       <h2>Recommended</h2>
       <div class="recommended-box">
-        <div class="columns is-multiline">
-          <div class="column is-half" v-for="l2 in list2" :key="l2.artist">
-            <div class="box">
-              <article class="media">
-                <div class="media-left">
-                  <figure class="image is-64x64">
-                    <img :src="l2.image_url" alt="Image" />
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <div class="content">
-                    <p>
-                      <strong>{{ l2.artist }}</strong>
-                      <br />
-                      <a
-                        :href="l2.lyrics"
-                        target="”_blank”"
-                        class="extra-link has-text-link"
-                      >{{ l2.title }}</a>
-                    </p>
+        <div class="columns is-multiline is-mobile">
+          <div
+            class="column is-one-quarter-tablet is-half-mobile"
+            v-for="rl in recommendedList"
+            :key="rl.artist"
+          >
+            <div class="card">
+              <div class="card-image">
+                <content-loader v-bind:width="400" v-bind:height="400" v-if="contentsShow">
+                  <rect x="0" y="0" rx="0" ry="0" width="400" height="400" />
+                </content-loader>
+                <figure class="image is-1by1" v-else>
+                  <img :src="rl.image_url" alt="Image" />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content over-text">
+                    <content-loader v-bind:width="400" v-bind:height="100" v-if="contentsShow">
+                      <rect x="0" y="0" rx="0" ry="0" width="400" height="100" />
+                    </content-loader>
+                    <div v-else>
+                      <p class="title is-6">{{ rl.artist }}</p>
+                      <p class="subtitle is-8">
+                        <a :href="rl.lyrics" target="”_blank”" class="extra-link">{{ rl.title }}</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </article>
+              </div>
             </div>
           </div>
         </div>
@@ -119,8 +223,12 @@
 
 <script>
 import axios from "axios";
+import { ContentLoader } from "vue-content-loader";
 
 export default {
+  components: {
+    ContentLoader
+  },
   data: function() {
     return {
       artist: "",
@@ -129,8 +237,10 @@ export default {
       src: "",
       searchResultShow: false,
       progressShow: false,
-      list: [],
-      list2: []
+      contentsShow: true,
+      trendingList: [],
+      recommendedList: ["", "", "", "", "", "", "", ""],
+      selected: "Artist & Song Search"
     };
   },
   methods: {
@@ -156,62 +266,80 @@ export default {
           console.log(error);
         })
         .finally(() => (this.progressShow = false));
+    },
+    getTrending: function() {
+      axios
+        .get("https://backend-n2zzz72gsq-uc.a.run.app/genius/new_releases", {
+          params: { limit: 16, offset: 0 }
+        })
+        .then(response => {
+          if (response.data.data) {
+            this.trendingList = response.data.data;
+          } else {
+            console.log("Not data.");
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        })
+        .finally(() => {
+          this.contentsShow = false;
+        });
+    },
+    getRecommended: function() {
+      axios
+        .get("https://backend-n2zzz72gsq-uc.a.run.app/genius/recommended", {
+          params: {}
+        })
+        .then(response => {
+          if (response.data.data) {
+            this.recommendedList = response.data.data;
+          } else {
+            console.log("Not data.");
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        })
+        .finally(() => {
+          this.contentsShow = false;
+        });
     }
   },
   created: function() {
-    axios
-      .get("https://backend-n2zzz72gsq-uc.a.run.app/genius/new_releases", {
-        params: { limit: 16, offset: 0 }
-      })
-      .then(response => {
-        if (response.data.data) {
-          this.list = response.data.data;
-        } else {
-          console.log("Not data.");
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-    axios
-      .get("https://backend-n2zzz72gsq-uc.a.run.app/genius/recommended", {
-        params: {}
-      })
-      .then(response => {
-        if (response.data.data) {
-          this.list2 = response.data.data;
-        } else {
-          console.log("Not data.");
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.getTrending();
+    this.getRecommended();
   }
 };
 </script>>
 
 <style scoped>
 h1 {
-  margin: 32px auto 8px auto;
+  margin: 24px auto;
   color: #f14667;
   font-size: 24px;
   font-weight: bolder;
   text-align: left;
+  font-family: "Oswald", sans-serif;
 }
 
 h2 {
   margin: 24px auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bolder;
   text-align: left;
+  font-family: "Oswald", sans-serif;
 }
 
 .extra-link {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
+  color: #f14667;
+}
+
+.extra-link:hover {
+  opacity: 0.8;
 }
 
 .search-form {
@@ -225,14 +353,16 @@ h2 {
   color: #fa4667;
 }
 
-.media-content {
-}
-
 .ellipsis {
   position: relative;
   height: 100px;
   line-height: 24px;
   overflow: hidden;
+}
+
+.over-text {
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .trending-box {
