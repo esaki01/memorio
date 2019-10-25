@@ -133,41 +133,43 @@
       <div class="search-result" v-if="searchResultShow">
         <h2>Search Results</h2>
         <div class="box" v-for="sr in searchResults" :key="sr.song">
-          <article class="media">
-            <div class="media-left">
-              <figure class="image is-128x128">
-                <img :src="sr.image_url" alt="Image" />
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-6">
-                {{ sr.song }}
-                / {{ sr.artist }}
-              </p>
-              <div class="content">
-                <p class="ellipsis">{{ sr.lyric }}</p>
+          <router-link :to="{ name: 'lyric', params: { artist: sr.artist, song: sr.song, image_url: sr.image_url, lyric: sr.lyric }}">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-128x128">
+                  <img :src="sr.image_url" alt="Image" />
+                </figure>
               </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item" aria-label="reply">
-                    <span class="icon is-small">
-                      <i class="fa fa-reply" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                  <a class="level-item" aria-label="retweet">
-                    <span class="icon is-small">
-                      <i class="fa fa-retweet" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                  <a class="level-item" aria-label="like">
-                    <span class="icon is-small">
-                      <i class="fa fa-heart" aria-hidden="true"></i>
-                    </span>
-                  </a>
+              <div class="media-content">
+                <p class="title is-6">
+                  {{ sr.song }}
+                  / {{ sr.artist }}
+                </p>
+                <div class="content">
+                  <p class="ellipsis has-text-grey-dark">{{ sr.lyric }}</p>
                 </div>
-              </nav>
-            </div>
-          </article>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item" aria-label="reply">
+                      <span class="icon is-small">
+                        <i class="fa fa-reply" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                    <a class="level-item" aria-label="retweet">
+                      <span class="icon is-small">
+                        <i class="fa fa-retweet" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                    <a class="level-item" aria-label="like">
+                      <span class="icon is-small">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </router-link>
         </div>
       </div>
 
@@ -385,4 +387,4 @@ h2 {
 .trending-box {
   margin-bottom: 16px;
 }
-</style>>
+</style>
