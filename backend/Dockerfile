@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 
 RUN pip install pipenv
-RUN pipenv run init --system --deploy
+RUN pipenv install --system --deploy
 
 ENV PORT=5000
 

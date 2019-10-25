@@ -19,7 +19,7 @@ jobs:
           working_directory: backend
           command: |
             sudo pip install pipenv
-            pipenv run init --system
+            pipenv install --dev --system
       - save_cache:
           key: deps9-{{ .Branch }}-{{ checksum "backend/Pipfile.lock" }}
           paths:
