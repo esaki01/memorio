@@ -9,13 +9,13 @@ Backend service of PARROT.
 ```
 # install requirements
 $ pip install pipenv
-$ pipenv install
+$ pipenv run init
 
 # activate
 $ pipenv shell
 ```
 
-### Container
+- Container
 ```
 # build docker image
 $ docker build -t $(DOCKER_TAG_NAME) .
@@ -27,14 +27,17 @@ $ docker build -t $(DOCKER_TAG_NAME) .
 $ python app.py
 ```
 
-### Container
+- Container
 ```
 # run docker container
 $ docker container run -p 5000:5000 $(DOCKER_TAG_NAME)
 ```
 
-## Others
+## Extras
 ```
-# lint
-$ pycodestyle src/
+# type check
+$ pipenv run lint
+
+# format
+$ pipenv run format
 ```

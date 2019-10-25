@@ -5,7 +5,6 @@ from src.usecases.word.dto.get_pronunciation_response import GetPronunciationRes
 
 
 class GetPronunciationUseCase(metaclass=ABCMeta):
-
     @abstractmethod
     def handle(self, request: GetPronunciationRequest) -> GetPronunciationResponse:
         raise NotImplementedError()

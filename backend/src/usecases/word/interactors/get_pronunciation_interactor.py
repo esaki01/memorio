@@ -8,18 +8,18 @@ from src.usecases.word.get_pronunciation_usecase import GetPronunciationUseCase
 
 
 class GetPronunciationInteractor(GetPronunciationUseCase):
-    WEBLIO_SITE_URL = 'https://ejje.weblio.jp/'
+    WEBLIO_SITE_URL = "https://ejje.weblio.jp/"
 
     def handle(self, request: GetPronunciationRequest) -> GetPronunciationResponse:
-        response = requests.get(f'{self.WEBLIO_SITE_URL}/content/{request.keyword}')
+        response = requests.get(f"{self.WEBLIO_SITE_URL}/content/{request.keyword}")
 
         if response:
-            soup = BeautifulSoup(response.text, 'lxml')
-            phonetic_tag = soup.select('span.phoneticEjjeDesc')
+            soup = BeautifulSoup(response.text, "lxml")
+            phonetic_tag = soup.select("span.phoneticEjjeDesc")
         else:
             phonetic_tag = None
 
         if phonetic_tag:
             return GetPronunciationResponse(phonetic_tag[-1].string)
         else:
-            raise UnexpectedError(f'Pronunciation of {request.keyword} is not found.')
+            raise UnexpectedError(f"Pronunciation of {request.keyword} is not found.")

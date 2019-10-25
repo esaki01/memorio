@@ -12,6 +12,7 @@ __pycache__
 
 # backend
 backend/secrets.py
+backend/.mypy_cache
 
 # frontend
 node_modules
