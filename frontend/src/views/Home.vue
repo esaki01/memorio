@@ -130,20 +130,20 @@
 
       <div class="search-result" v-if="searchResultShow">
         <h2>Search Results</h2>
-        <div class="box">
+        <div class="box" v-for="sr in searchResults" :key="sr.song">
           <article class="media">
             <div class="media-left">
               <figure class="image is-128x128">
-                <img :src="src" alt="Image" />
+                <img :src="sr.image_url" alt="Image" />
               </figure>
             </div>
             <div class="media-content">
               <p class="title is-6">
-                {{ data.title }}
-                / {{ data.artist }}
+                {{ sr.song }}
+                / {{ sr.artist }}
               </p>
               <div class="content">
-                <p class="ellipsis">{{ data.lyrics }}</p>
+                <p class="ellipsis">{{ sr.lyric }}</p>
               </div>
               <nav class="level is-mobile">
                 <div class="level-left">
@@ -176,8 +176,10 @@
           <rect x="0" y="12" rx="3" ry="3" width="400" height="10" />
         </content-loader>
         <div class="tags" v-else>
-          <span class="tag" v-for="tl in trendingList" :key="tl">
-            <span>{{ tl }}</span>
+          <span class="tag" v-for="tl in trendingList" :key="tl.title">
+            <span>
+              <a :href="tl.external_url" target="_blank" class="has-text-grey-dark">{{ tl.title }}</a>
+            </span>
           </span>
         </div>
       </div>
@@ -187,7 +189,7 @@
           <div
             class="column is-one-quarter-tablet is-half-mobile"
             v-for="rl in recommendedList"
-            :key="rl.artist"
+            :key="rl.image_url"
           >
             <div class="card">
               <div class="card-image">
@@ -207,7 +209,7 @@
                     <div v-else>
                       <p class="title is-6">{{ rl.artist }}</p>
                       <p class="subtitle is-8">
-                        <a :href="rl.lyrics" target="”_blank”" class="extra-link">{{ rl.title }}</a>
+                        <a :href="rl.external_url" target="_blank" class="extra-link">{{ rl.song }}</a>
                       </p>
                     </div>
                   </div>
@@ -233,11 +235,10 @@ export default {
     return {
       artist: "",
       song: "",
-      data: {},
-      src: "",
       searchResultShow: false,
       progressShow: false,
       contentsShow: true,
+      searchResults: [],
       trendingList: [],
       recommendedList: ["", "", "", "", "", "", "", ""],
       selected: "Artist & Song Search"
@@ -245,18 +246,28 @@ export default {
   },
   methods: {
     search: function() {
+      this.progressShow = true;
+
+      var requestUrl = "";
+
       if (this.artist != "" && this.song != "") {
-        this.progressShow = true;
+        requestUrl =
+          "https://backend-n2zzz72gsq-uc.a.run.app/music/lyric/artist-song/search";
+      } else if (this.artist != "") {
+        requestUrl =
+          "https://backend-n2zzz72gsq-uc.a.run.app/music/lyric/artist/search";
+      } else if (this.song != "") {
+        requestUrl =
+          "https://backend-n2zzz72gsq-uc.a.run.app/music/lyric/song/search";
       }
 
       axios
-        .get("https://backend-n2zzz72gsq-uc.a.run.app/genius/search", {
+        .get(requestUrl, {
           params: { artist: this.artist, song: this.song }
         })
         .then(response => {
           if (response.data.data) {
-            this.data = response.data.data;
-            this.src = this.data.image_url;
+            this.searchResults = response.data.data;
             this.searchResultShow = true;
           } else {
             console.log("Not data.");
@@ -265,11 +276,15 @@ export default {
         .catch(error => {
           console.log(error);
         })
-        .finally(() => (this.progressShow = false));
+        .finally(() => {
+          this.progressShow = false;
+          this.artist = "";
+          this.song = "";
+        });
     },
     getTrending: function() {
       axios
-        .get("https://backend-n2zzz72gsq-uc.a.run.app/genius/new_releases", {
+        .get("https://backend-n2zzz72gsq-uc.a.run.app/music/trending/list", {
           params: { limit: 16, offset: 0 }
         })
         .then(response => {
@@ -288,7 +303,7 @@ export default {
     },
     getRecommended: function() {
       axios
-        .get("https://backend-n2zzz72gsq-uc.a.run.app/genius/recommended", {
+        .get("https://backend-n2zzz72gsq-uc.a.run.app/music/recommended/list", {
           params: {}
         })
         .then(response => {
