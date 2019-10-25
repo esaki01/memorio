@@ -4,7 +4,7 @@
     <div style="height: 12px;" v-else></div>
     <div class="search-form container">
       <h1>Search Lyrics</h1>
-      <div class="field is-horizontal is-hidden-tablet">
+      <div class="field is-hidden-tablet">
         <div class="field-body">
           <div class="field has-addons" v-if="selected === 'Artist Search'">
             <p class="control is-expanded has-icons-left">
@@ -39,6 +39,8 @@
                 <i class="fa fa-user-circle"></i>
               </span>
             </p>
+          </div>
+          <div class="field has-addons" v-if="selected === 'Artist & Song Search'">
             <p class="control is-expanded has-icons-left">
               <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
               <span class="icon is-small is-left">
