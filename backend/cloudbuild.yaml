@@ -3,8 +3,8 @@ steps:
     args:
       - kms
       - decrypt
-      - --ciphertext-file=./backend/config.py.encrypted
-      - --plaintext-file=./backend/config.py
+      - --ciphertext-file=./backend/secrets.py.encrypted
+      - --plaintext-file=./backend/secrets.py
       - --location=us-central1
       - --keyring=secrets-key-ring
       - --key=secrets-key
