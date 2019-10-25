@@ -21,4 +21,5 @@ class UnauthorizedError(BaseError):
 class UnexpectedError(BaseError):
     def __init__(self, state: str):
         super().__init__(
-            message=f"Unexpected error occurred. {state} Please contact your administrator for assistance.")
+            message=f"Unexpected error occurred. {state} Please contact your administrator for assistance."
+        )

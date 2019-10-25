@@ -6,7 +6,6 @@ from src.usecases.music.dto.get_recommended_response import GetRecommendedRespon
 
 
 class GetRecommendedUseCase(metaclass=ABCMeta):
-
     @abstractmethod
     def handle(self, request: GetRecommendedRequest) -> List[GetRecommendedResponse]:
         raise NotImplementedError()

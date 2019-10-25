@@ -6,7 +6,6 @@ from src.usecases.music.dto.get_trending_response import GetTrendingResponse
 
 
 class GetTrendingUseCase(metaclass=ABCMeta):
-
     @abstractmethod
     def handle(self, request: GetTrendingRequest) -> List[GetTrendingResponse]:
         raise NotImplementedError()

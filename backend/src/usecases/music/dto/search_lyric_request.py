@@ -11,4 +11,4 @@ class SearchLyricRequest:
 
     def __post_init__(self):
         if not self.artist and not self.song:
-            raise ValidationError('at least artist or song is required.')
+            raise ValidationError("at least artist or song is required.")
