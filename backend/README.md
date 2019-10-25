@@ -24,13 +24,13 @@ $ docker build -t $(DOCKER_TAG_NAME) .
 ## Run application
 ```
 # compiles and hot-reloads
-$ python app.py
+$ pipenv run start
 ```
 
 - Container
 ```
 # run docker container
-$ docker container run -p 5000:5000 $(DOCKER_TAG_NAME)
+$ docker container run --rm -p 5000:5000 $(DOCKER_TAG_NAME)
 ```
 
 ## Extras

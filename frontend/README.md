@@ -28,7 +28,7 @@ $ npm run serve
 ### Container
 ```
 # run docker container
-$ docker container run -p 8080:8080 $(DOCKER_TAG_NAME)
+$ docker container run --rm -p 8080:8080 $(DOCKER_TAG_NAME)
 ```
 
 ## Others
