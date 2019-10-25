@@ -11,7 +11,7 @@
 __pycache__
 
 # backend
-backend/*config.py
+backend/secrets.py
 
 # frontend
 node_modules
