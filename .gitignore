@@ -13,6 +13,7 @@ __pycache__
 # backend
 backend/secrets.py
 backend/.mypy_cache
+backend/google-credentials.json
 
 # frontend
 node_modules
