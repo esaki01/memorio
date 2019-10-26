@@ -5,7 +5,6 @@ import requests
 from bs4 import BeautifulSoup
 
 from src.adapters.repositories.word_repository import WordRepository
-from src.exception.error import UnexpectedError
 from src.usecases.word.dto.get_pronunciation_request import GetPronunciationRequest
 from src.usecases.word.dto.get_pronunciation_response import GetPronunciationResponse
 from src.usecases.word.get_pronunciation_usecase import GetPronunciationUseCase
@@ -22,9 +21,6 @@ class GetPronunciationInteractor(GetPronunciationUseCase):
 
         if not phonetic_symbol:
             phonetic_symbol = self._get_pronunciation_from_weblio(request.keyword)
-
-        if not phonetic_symbol:
-            raise UnexpectedError(f"Pronunciation of {request.keyword} is not found.")
 
         return GetPronunciationResponse(phonetic_symbol)
 
