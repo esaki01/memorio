@@ -19,11 +19,13 @@ class GetPronunciationInteractor(GetPronunciationUseCase):
         self._word_repo = word_repo
 
     def handle(self, request: GetPronunciationRequest) -> GetPronunciationResponse:
-        keywords = [re.sub("['\",.?+:;*!#$%&]", "", k.lower()) for k in request.keyword.split()]
+        keywords = [
+            re.sub("['\",.?+:;*!#$%&]", "", k.lower()) for k in request.keyword.split()
+        ]
         words = self._get_pronunciation_from_repository(keywords)
         words_map = {w.id: w.phonetic_symbol for w in words if w}
 
-        phonetic_symbols = [words_map.get(k) for k in keywords]
+        phonetic_symbols = [words_map[k] if words_map.get(k) else "*" for k in keywords]
 
         # TODO Access weblio
         # if not phonetic_symbol:
@@ -32,7 +34,7 @@ class GetPronunciationInteractor(GetPronunciationUseCase):
         return GetPronunciationResponse(phonetic_symbols)
 
     def _get_pronunciation_from_repository(
-            self, keywords: List[str]
+        self, keywords: List[str]
     ) -> List[Optional[Word]]:
         return self._word_repo.find_by_ids(keywords)
 
