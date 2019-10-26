@@ -1,61 +1,63 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Signin from './views/Signin.vue'
-import Signup from './views/Signup.vue'
-import Library from './views/Library.vue'
-import Lyric from './views/Lyric.vue'
-import firebase from 'firebase'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import Signin from './views/Signin.vue';
+import Signup from './views/Signup.vue';
+import Library from './views/Library.vue';
+import Lyric from './views/Lyric.vue';
+import firebase from 'firebase';
 
-Vue.use(Router)
+Vue.use(Router);
 
-let router = new Router({
+const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [{
-        path: '/',
-        name: 'home',
-        component: Home
-    },
-    {
-        path: '/library',
-        name: 'library',
-        component: Library,
-        meta: { requiresAuth: true }
-    },
-    {
-        path: '/signin',
-        name: 'signin',
-        component: Signin
-    },
-    {
-        path: '/signup',
-        name: 'signup',
-        component: Signup
-    },
-    {
-        path: '/lyric/:artist/:song/:image_url/:lyric',
-        name: 'lyric',
-        component: Lyric
-    }]
-})
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: Home,
+        },
+        {
+            path: '/library',
+            name: 'library',
+            component: Library,
+            meta: { requiresAuth: true },
+        },
+        {
+            path: '/signin',
+            name: 'signin',
+            component: Signin,
+        },
+        {
+            path: '/signup',
+            name: 'signup',
+            component: Signup,
+        },
+        {
+            path: '/lyric/:artist/:song/:image_url/:lyric',
+            name: 'lyric',
+            component: Lyric,
+        },
+    ],
+});
 
 router.beforeEach((to, from, next) => {
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
     if (requiresAuth) {
-        firebase.auth().onAuthStateChanged(function (user) {
+        firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
-                next()
+                next();
             } else {
                 next({
                     path: '/signin',
-                    query: { redirect: to.fullPath }
-                })
+                    query: { redirect: to.fullPath },
+                });
             }
-        })
+        });
     } else {
-        next()
+        next();
     }
-})
+});
 
-export default router
+export default router;

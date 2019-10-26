@@ -12,12 +12,20 @@
             <tbody>
               <tr>
                 <td v-for="l in 10" :key="l.id">
-                  <span class="title is-6">{{ lyrics[l - 1 + (i - 1) * 10] }}</span>
+                  <span class="title is-6">
+                    {{
+                    lyrics[l - 1 + (i - 1) * 10]
+                    }}
+                  </span>
                 </td>
               </tr>
               <tr>
                 <td v-for="p in 10" :key="p.id">
-                  <span class="subtitle is-6">{{ pronunciations[p - 1 + (i - 1) * 10] }}</span>
+                  <span class="subtitle is-6">
+                    {{
+                    pronunciations[p - 1 + (i - 1) * 10]
+                    }}
+                  </span>
                 </td>
               </tr>
             </tbody>
