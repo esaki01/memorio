@@ -3,6 +3,8 @@ FROM python:3.7
 WORKDIR /app
 COPY . .
 
+ENV GOOGLE_APPLICATION_CREDENTIALS=google-credentials.json
+
 RUN pip install pipenv
 RUN pipenv install --system --deploy
 

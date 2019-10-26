@@ -1,5 +1,7 @@
 from flask import Blueprint, request
 
+from src.adapters.repositories.impl.bigquery_repository import BigQueryRepository
+from src.adapters.repositories.word_repository import WordRepository
 from src.exception.error import ValidationError, UnexpectedError
 from src.exception.handler import (
     handle_validation_error,
@@ -24,7 +26,9 @@ def pronunciation_search():
         except ValidationError as e:
             return handle_validation_error(e)
 
-        gp_interactor = GetPronunciationInteractor()
+        word_repo: WordRepository = BigQueryRepository()
+
+        gp_interactor = GetPronunciationInteractor(word_repo)
 
         try:
             gp_response = gp_interactor.handle(gp_request)
