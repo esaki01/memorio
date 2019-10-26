@@ -1,8 +1,8 @@
 <template>
   <div class="signup">
-    <div class="notification is-danger" v-if="isErrorShow">{{ errorMsg }}</div>
-    <progress class="progress is-small is-primary" max="100" v-if="isSuccessShow">15%</progress>
-    <div style="height: 12px;" v-else></div>
+    <div v-if="isErrorShow" class="notification is-danger">{{ errorMsg }}</div>
+    <progress v-if="isSuccessShow" class="progress is-small is-primary" max="100">15%</progress>
+    <div v-else style="height: 12px;" />
 
     <div class="columns">
       <div class="column is-12">
@@ -11,24 +11,24 @@
             <label class="label">Sign up for PARROT</label>
 
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email" v-model="email" />
+              <input v-model="email" class="input" type="email" placeholder="Email" />
               <span class="icon is-left">
-                <i class="fa fa-envelope"></i>
+                <i class="fa fa-envelope" />
               </span>
               <span class="icon is-right">
-                <i class="fa fa-check"></i>
+                <i class="fa fa-check" />
               </span>
             </div>
           </div>
 
           <div class="field">
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="password" placeholder="Password" v-model="password" />
+              <input v-model="password" class="input" type="password" placeholder="Password" />
               <span class="icon is-left">
-                <i class="fa fa-lock"></i>
+                <i class="fa fa-lock" />
               </span>
               <span class="icon is-right">
-                <i class="fa fa-check"></i>
+                <i class="fa fa-check" />
               </span>
             </div>
           </div>
@@ -48,7 +48,7 @@
 import firebase from "firebase";
 
 export default {
-  name: "signup",
+  name: "Signup",
   data() {
     return {
       email: "",

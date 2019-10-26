@@ -1,8 +1,8 @@
 <template>
   <div class="signin">
-    <div class="notification is-danger" v-if="isErrorShow">{{ errorMsg }}</div>
-    <progress class="progress is-small is-primary" max="100" v-if="isSuccessShow">15%</progress>
-    <div style="height: 12px;" v-else></div>
+    <div v-if="isErrorShow" class="notification is-danger">{{ errorMsg }}</div>
+    <progress v-if="isSuccessShow" class="progress is-small is-primary" max="100">15%</progress>
+    <div v-else style="height: 12px;" />
     <div class="columns level reverse-row-order">
       <div class="column is-6 level-right">
         <div class="form">
@@ -13,7 +13,7 @@
               <p class="control">
                 <a class="button is-fullwidth is-danger" @click="signinWithGoogle">
                   <span class="icon">
-                    <i class="fa fa-google"></i>
+                    <i class="fa fa-google" />
                   </span>
                   <span>Sign in with Google</span>
                 </a>
@@ -24,33 +24,33 @@
               <p class="control">
                 <a class="button is-fullwidth is-info" @click="signinWithTwitter">
                   <span class="icon">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-twitter" />
                   </span>
                   <span>Sign in with Twitter</span>
                 </a>
               </p>
             </div>
 
-            <div class="is-divider" data-content="OR"></div>
+            <div class="is-divider" data-content="OR" />
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email" v-model="email" />
+              <input v-model="email" class="input" type="email" placeholder="Email" />
               <span class="icon is-left">
-                <i class="fa fa-envelope"></i>
+                <i class="fa fa-envelope" />
               </span>
               <span class="icon is-right">
-                <i class="fa fa-check"></i>
+                <i class="fa fa-check" />
               </span>
             </div>
           </div>
 
           <div class="field">
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="password" placeholder="Password" v-model="password" />
+              <input v-model="password" class="input" type="password" placeholder="Password" />
               <span class="icon is-left">
-                <i class="fa fa-lock"></i>
+                <i class="fa fa-lock" />
               </span>
               <span class="icon is-right">
-                <i class="fa fa-check"></i>
+                <i class="fa fa-check" />
               </span>
             </div>
           </div>
@@ -60,7 +60,7 @@
               <a class="button is-fullwidth is-success" @click="signin">Sign in</a>
             </p>
             <p class="not-have">
-              <span>New to PARROT? </span>
+              <span>New to PARROT?</span>
               <a>
                 <router-link to="/signup">Create an account</router-link>
               </a>.
@@ -69,8 +69,14 @@
         </div>
       </div>
       <div class="column is-6 level-left">
-        <p class="home-title has-text-danger">Platform for<br/>English learners</p>
-        <p class="home-sub">Get started for free!<br/>You will be able to understand how to pronounce the words in the song lyrics 
+        <p class="home-title has-text-danger">
+          Platform for
+          <br />English learners
+        </p>
+        <p class="home-sub">
+          Get started for free!
+          <br />You will be able to understand how to pronounce the words in the
+          song lyrics
         </p>
       </div>
     </div>
@@ -81,7 +87,7 @@
 import firebase from "firebase";
 
 export default {
-  name: "signin",
+  name: "Signin",
   data: function() {
     return {
       email: "",
@@ -169,12 +175,12 @@ a {
   font-weight: 500;
 }
 
-.not-have a{
-  color: #3173DC;
+.not-have a {
+  color: #3173dc;
   font-weight: 500;
 }
 
-.not-have a:hover{
+.not-have a:hover {
   text-decoration: underline;
 }
 

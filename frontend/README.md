@@ -13,7 +13,7 @@ Frontend service of PARROT.
 $ npm install
 ```
 
-### Container
+- Container
 ```
 # build docker image
 $ docker build -t $(DOCKER_TAG_NAME) .
@@ -25,13 +25,13 @@ $ docker build -t $(DOCKER_TAG_NAME) .
 $ npm run serve
 ```
 
-### Container
+- Container
 ```
 # run docker container
 $ docker container run --rm -p 8080:8080 $(DOCKER_TAG_NAME)
 ```
 
-## Others
+## Extras
 ```
 # compiles and minifies
 $ npm run build

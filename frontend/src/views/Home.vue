@@ -1,50 +1,50 @@
 <template>
   <div class="home">
-    <progress class="progress is-small is-primary" max="100" v-if="progressShow">15%</progress>
-    <div style="height: 12px;" v-else></div>
+    <progress v-if="progressShow" class="progress is-small is-primary" max="100">15%</progress>
+    <div v-else style="height: 12px;" />
     <div class="search-form container">
       <h1>Search Lyrics</h1>
       <div class="field is-hidden-tablet">
         <div class="field-body">
-          <div class="field has-addons" v-if="selected === 'Artist Search'">
+          <div v-if="selected === 'Artist Search'" class="field has-addons">
             <p class="control is-expanded has-icons-left">
               <input
+                v-model="artist"
                 class="input"
                 type="text"
                 placeholder="Artist (e.g. The Beatles)"
-                v-model="artist"
               />
               <span class="icon is-small is-left">
-                <i class="fa fa-user-circle"></i>
+                <i class="fa fa-user-circle" />
               </span>
             </p>
           </div>
-          <div class="field has-addons" v-if="selected === 'Song Search'">
+          <div v-if="selected === 'Song Search'" class="field has-addons">
             <p class="control is-expanded has-icons-left">
-              <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
+              <input v-model="song" class="input" type="email" placeholder="Song (e.g. Let It Be)" />
               <span class="icon is-small is-left">
-                <i class="fa fa-music"></i>
+                <i class="fa fa-music" />
               </span>
             </p>
           </div>
-          <div class="field has-addons" v-if="selected === 'Artist & Song Search'">
+          <div v-if="selected === 'Artist & Song Search'" class="field has-addons">
             <p class="control is-expanded has-icons-left">
               <input
+                v-model="artist"
                 class="input"
                 type="text"
                 placeholder="Artist (e.g. The Beatles)"
-                v-model="artist"
               />
               <span class="icon is-small is-left">
-                <i class="fa fa-user-circle"></i>
+                <i class="fa fa-user-circle" />
               </span>
             </p>
           </div>
-          <div class="field has-addons" v-if="selected === 'Artist & Song Search'">
+          <div v-if="selected === 'Artist & Song Search'" class="field has-addons">
             <p class="control is-expanded has-icons-left">
-              <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
+              <input v-model="song" class="input" type="email" placeholder="Song (e.g. Let It Be)" />
               <span class="icon is-small is-left">
-                <i class="fa fa-music"></i>
+                <i class="fa fa-music" />
               </span>
             </p>
           </div>
@@ -60,7 +60,7 @@
             </p>
             <p class="control">
               <a class="button is-primary" @click="search">
-                <span class="fa fa-search has-text-white"></span>
+                <span class="fa fa-search has-text-white" />
               </a>
             </p>
           </div>
@@ -70,45 +70,45 @@
       <div class="field is-horizontal is-hidden-mobile">
         <div class="field-body">
           <div class="field has-addons">
-            <p class="control is-expanded has-icons-left" v-if="selected === 'Artist Search'">
+            <p v-if="selected === 'Artist Search'" class="control is-expanded has-icons-left">
               <input
+                v-model="artist"
                 class="input"
                 type="text"
                 placeholder="Artist (e.g. The Beatles)"
-                v-model="artist"
               />
               <span class="icon is-small is-left">
-                <i class="fa fa-user-circle"></i>
+                <i class="fa fa-user-circle" />
               </span>
             </p>
-            <p class="control is-expanded has-icons-left" v-if="selected === 'Song Search'">
-              <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
+            <p v-if="selected === 'Song Search'" class="control is-expanded has-icons-left">
+              <input v-model="song" class="input" type="email" placeholder="Song (e.g. Let It Be)" />
               <span class="icon is-small is-left">
-                <i class="fa fa-music"></i>
+                <i class="fa fa-music" />
               </span>
             </p>
 
             <p
-              class="control is-expanded has-icons-left"
               v-if="selected === 'Artist & Song Search'"
+              class="control is-expanded has-icons-left"
             >
               <input
+                v-model="artist"
                 class="input"
                 type="text"
                 placeholder="Artist (e.g. The Beatles)"
-                v-model="artist"
               />
               <span class="icon is-small is-left">
-                <i class="fa fa-user-circle"></i>
+                <i class="fa fa-user-circle" />
               </span>
             </p>
             <p
-              class="control is-expanded has-icons-left"
               v-if="selected === 'Artist & Song Search'"
+              class="control is-expanded has-icons-left"
             >
-              <input class="input" type="email" placeholder="Song (e.g. Let It Be)" v-model="song" />
+              <input v-model="song" class="input" type="email" placeholder="Song (e.g. Let It Be)" />
               <span class="icon is-small is-left">
-                <i class="fa fa-music"></i>
+                <i class="fa fa-music" />
               </span>
             </p>
 
@@ -123,17 +123,27 @@
             </p>
             <p class="control">
               <a class="button is-primary" @click="search">
-                <span class="fa fa-search has-text-white"></span>
+                <span class="fa fa-search has-text-white" />
               </a>
             </p>
           </div>
         </div>
       </div>
 
-      <div class="search-result" v-if="searchResultShow">
+      <div v-if="searchResultShow" class="search-result">
         <h2>Search Results</h2>
-        <div class="box" v-for="sr in searchResults" :key="sr.song">
-          <router-link :to="{ name: 'lyric', params: { artist: sr.artist, song: sr.song, image_url: sr.image_url, lyric: sr.lyric }}">
+        <div v-for="sr in searchResults" :key="sr.song" class="box">
+          <router-link
+            :to="{
+              name: 'lyric',
+              params: {
+                artist: sr.artist,
+                song: sr.song,
+                image_url: sr.image_url,
+                lyric: sr.lyric,
+              },
+            }"
+          >
             <article class="media">
               <div class="media-left">
                 <figure class="image is-128x128">
@@ -152,17 +162,17 @@
                   <div class="level-left">
                     <a class="level-item" aria-label="reply">
                       <span class="icon is-small">
-                        <i class="fa fa-reply" aria-hidden="true"></i>
+                        <i class="fa fa-reply" aria-hidden="true" />
                       </span>
                     </a>
                     <a class="level-item" aria-label="retweet">
                       <span class="icon is-small">
-                        <i class="fa fa-retweet" aria-hidden="true"></i>
+                        <i class="fa fa-retweet" aria-hidden="true" />
                       </span>
                     </a>
                     <a class="level-item" aria-label="like">
                       <span class="icon is-small">
-                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <i class="fa fa-heart" aria-hidden="true" />
                       </span>
                     </a>
                   </div>
@@ -175,12 +185,12 @@
 
       <h2>Trending</h2>
       <div class="trending-box">
-        <content-loader v-bind:width="400" v-bind:height="22" v-if="contentsShow">
+        <content-loader v-if="contentsShow" :width="400" :height="22">
           <rect x="0" y="0" rx="3" ry="3" width="400" height="10" />
           <rect x="0" y="12" rx="3" ry="3" width="400" height="10" />
         </content-loader>
-        <div class="tags" v-else>
-          <span class="tag" v-for="tl in trendingList" :key="tl.title">
+        <div v-else class="tags">
+          <span v-for="tl in trendingList" :key="tl.title" class="tag">
             <span>
               <a :href="tl.external_url" target="_blank" class="has-text-grey-dark">{{ tl.title }}</a>
             </span>
@@ -191,23 +201,23 @@
       <div class="recommended-box">
         <div class="columns is-multiline is-mobile">
           <div
-            class="column is-one-quarter-tablet is-half-mobile"
             v-for="rl in recommendedList"
             :key="rl.image_url"
+            class="column is-one-quarter-tablet is-half-mobile"
           >
             <div class="card">
               <div class="card-image">
-                <content-loader v-bind:width="400" v-bind:height="400" v-if="contentsShow">
+                <content-loader v-if="contentsShow" :width="400" :height="400">
                   <rect x="0" y="0" rx="0" ry="0" width="400" height="400" />
                 </content-loader>
-                <figure class="image is-1by1" v-else>
+                <figure v-else class="image is-1by1">
                   <img :src="rl.image_url" alt="Image" />
                 </figure>
               </div>
               <div class="card-content">
                 <div class="media">
                   <div class="media-content over-text">
-                    <content-loader v-bind:width="400" v-bind:height="100" v-if="contentsShow">
+                    <content-loader v-if="contentsShow" :width="400" :height="100">
                       <rect x="0" y="0" rx="0" ry="0" width="400" height="100" />
                     </content-loader>
                     <div v-else>
@@ -247,6 +257,10 @@ export default {
       recommendedList: ["", "", "", "", "", "", "", ""],
       selected: "Artist & Song Search"
     };
+  },
+  created: function() {
+    this.getTrending();
+    this.getRecommended();
   },
   methods: {
     search: function() {
@@ -324,13 +338,10 @@ export default {
           this.contentsShow = false;
         });
     }
-  },
-  created: function() {
-    this.getTrending();
-    this.getRecommended();
   }
 };
-</script>>
+</script
+>>
 
 <style scoped>
 h1 {
