@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from google.cloud import bigquery
 
@@ -10,11 +10,11 @@ class BigQueryRepository(WordRepository):
     def __init__(self):
         self._client = bigquery.Client()
 
-    def find_by_id(self, id: str) -> Optional[Word]:
-        query = f"SELECT id, phonetic_symbol FROM `parrot.word` WHERE id = '{id}'"
+    def find_by_ids(self, ids: List[str]) -> List[Optional[Word]]:
+        query_ids = ", ".join([f"'{i}'" for i in ids])
+        query = (
+            f"SELECT id, phonetic_symbol FROM `parrot.word` WHERE id in ({query_ids})"
+        )
         results = list(self._client.query(query, location="US"))
 
-        if results and len(results) >= 1:
-            return Word(**results[0])
-        else:
-            return None
+        return [Word(**r) for r in results]
