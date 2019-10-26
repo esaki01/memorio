@@ -1,7 +1,7 @@
 import dataclasses
-from typing import Optional, List
+from typing import List
 
 
 @dataclasses.dataclass
 class GetPronunciationResponse:
-    phonetic_symbols: List[Optional[str]]
+    phonetic_symbols: List[str]
