@@ -5,9 +5,7 @@ from src.adapters.repositories.word_repository import WordRepository
 from src.exception.error import ValidationError
 from src.exception.handler import handle_validation_error, handle_success
 from src.usecases.word.dto.get_pronunciation_request import GetPronunciationRequest
-from src.usecases.word.interactors.get_pronunciation_interactor import (
-    GetPronunciationInteractor,
-)
+from src.usecases.word.interactors.get_pronunciation_interactor import GetPronunciationInteractor
 
 word = Blueprint("word", __name__, url_prefix="/word")
 
