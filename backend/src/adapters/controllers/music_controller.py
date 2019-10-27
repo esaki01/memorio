@@ -1,17 +1,11 @@
 from flask import Blueprint, request
 
 from src.exception.error import ValidationError, UnexpectedError
-from src.exception.handler import (
-    handle_validation_error,
-    handle_unexpected_error,
-    handle_success,
-)
+from src.exception.handler import handle_validation_error, handle_unexpected_error, handle_success
 from src.usecases.music.dto.get_recommended_request import GetRecommendedRequest
 from src.usecases.music.dto.get_trending_request import GetTrendingRequest
 from src.usecases.music.dto.search_lyric_request import SearchLyricRequest
-from src.usecases.music.interactors.get_recommended_interactor import (
-    GetRecommendedInteractor,
-)
+from src.usecases.music.interactors.get_recommended_interactor import GetRecommendedInteractor
 from src.usecases.music.interactors.get_trending_interactor import GetTrendingInteractor
 from src.usecases.music.interactors.search_lyric_interactor import SearchLyricInteractor
 

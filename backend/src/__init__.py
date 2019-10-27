@@ -4,10 +4,7 @@ from flask_cors import CORS
 from src.adapters.controllers.music_controller import music
 from src.adapters.controllers.word_controller import word
 
-config = {
-    "development": "config.DevelopmentConfig",
-    "production": "config.ProductionConfig",
-}
+config = {"development": "config.DevelopmentConfig", "production": "config.ProductionConfig"}
 
 secrets = "secrets.Secrets"
 
