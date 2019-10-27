@@ -5,8 +5,8 @@ from src.exception.error import ValidationError
 
 @dataclasses.dataclass
 class GetPronunciationRequest:
-    keyword: str
+    lyric: str
 
     def __post_init__(self):
-        if not self.keyword:
-            raise ValidationError("keyword is required.")
+        if not self.lyric:
+            raise ValidationError("lyric is required.")

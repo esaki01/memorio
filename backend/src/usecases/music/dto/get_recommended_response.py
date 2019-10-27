@@ -1,9 +1,9 @@
 import dataclasses
+from typing import List
+
+from src.domain.recommended import Recommended
 
 
 @dataclasses.dataclass
 class GetRecommendedResponse:
-    artist: str
-    song: str
-    image_url: str
-    external_url: str
+    recommended: List[Recommended]

@@ -132,14 +132,14 @@
 
       <div v-if="searchResultShow" class="search-result">
         <h2>Search Results</h2>
-        <div v-for="sr in searchResults" :key="sr.song" class="box">
+        <div v-for="sr in searchResults" :key="sr.id" class="box">
           <router-link
             :to="{
               name: 'lyric',
               params: {
-                artist: sr.artist,
-                song: sr.song,
-                image_url: sr.image_url,
+                artist: sr.music.artist,
+                song: sr.music.song,
+                image_url: sr.music.image_url,
                 lyric: sr.lyric,
               },
             }"
@@ -147,13 +147,13 @@
             <article class="media">
               <div class="media-left">
                 <figure class="image is-128x128">
-                  <img :src="sr.image_url" alt="Image" />
+                  <img :src="sr.music.image_url" alt="Image" />
                 </figure>
               </div>
               <div class="media-content">
                 <p class="title is-6">
-                  {{ sr.song }}
-                  / {{ sr.artist }}
+                  {{ sr.music.song }}
+                  / {{ sr.music.artist }}
                 </p>
                 <div class="content">
                   <p class="ellipsis has-text-grey-dark">{{ sr.lyric }}</p>
@@ -190,7 +190,7 @@
           <rect x="0" y="12" rx="3" ry="3" width="400" height="10" />
         </content-loader>
         <div v-else class="tags">
-          <span v-for="tl in trendingList" :key="tl.title" class="tag">
+          <span v-for="tl in trendingList" :key="tl.id" class="tag">
             <span>
               <a :href="tl.external_url" target="_blank" class="has-text-grey-dark">{{ tl.title }}</a>
             </span>
@@ -202,7 +202,7 @@
         <div class="columns is-multiline is-mobile">
           <div
             v-for="rl in recommendedList"
-            :key="rl.image_url"
+            :key="rl.id"
             class="column is-one-quarter-tablet is-half-mobile"
           >
             <div class="card">
@@ -211,7 +211,7 @@
                   <rect x="0" y="0" rx="0" ry="0" width="400" height="400" />
                 </content-loader>
                 <figure v-else class="image is-1by1">
-                  <img :src="rl.image_url" alt="Image" />
+                  <img :src="rl.music.image_url" alt="Image" />
                 </figure>
               </div>
               <div class="card-content">
@@ -221,9 +221,9 @@
                       <rect x="0" y="0" rx="0" ry="0" width="400" height="100" />
                     </content-loader>
                     <div v-else>
-                      <p class="title is-6">{{ rl.artist }}</p>
+                      <p class="title is-6">{{ rl.music.artist }}</p>
                       <p class="subtitle is-8">
-                        <a :href="rl.external_url" target="_blank" class="extra-link">{{ rl.song }}</a>
+                        <a :href="rl.external_url" target="_blank" class="extra-link">{{ rl.music.song }}</a>
                       </p>
                     </div>
                   </div>
@@ -285,7 +285,7 @@ export default {
         })
         .then(response => {
           if (response.data.data) {
-            this.searchResults = response.data.data;
+            this.searchResults = response.data.data.music_details;
             this.searchResultShow = true;
           } else {
             console.log("Not data.");
@@ -307,7 +307,7 @@ export default {
         })
         .then(response => {
           if (response.data.data) {
-            this.trendingList = response.data.data;
+            this.trendingList = response.data.data.trending;
           } else {
             console.log("Not data.");
           }
@@ -326,7 +326,7 @@ export default {
         })
         .then(response => {
           if (response.data.data) {
-            this.recommendedList = response.data.data;
+            this.recommendedList = response.data.data.recommended;
           } else {
             console.log("Not data.");
           }

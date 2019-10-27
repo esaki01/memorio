@@ -13,10 +13,10 @@ word = Blueprint("word", __name__, url_prefix="/word")
 @word.route("/pronunciation/search", methods=["GET"])
 def pronunciation_search():
     if request.method == "GET":
-        keyword = request.args.get("keyword")
+        lyric = request.args.get("lyric")
 
         try:
-            gp_request = GetPronunciationRequest(keyword)
+            gp_request = GetPronunciationRequest(lyric)
         except ValidationError as e:
             return handle_validation_error(e)
 

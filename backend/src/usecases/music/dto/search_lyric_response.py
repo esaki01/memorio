@@ -1,9 +1,9 @@
 import dataclasses
+from typing import List
+
+from src.domain.music_detail import MusicDetail
 
 
 @dataclasses.dataclass
 class SearchLyricResponse:
-    artist: str
-    song: str
-    image_url: str
-    lyric: str
+    music_details: List[MusicDetail]
