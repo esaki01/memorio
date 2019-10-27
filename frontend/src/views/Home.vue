@@ -258,7 +258,7 @@ export default {
       selected: "Artist & Song Search"
     };
   },
-  created: function() {
+  mounted: function() {
     this.getTrending();
     this.getRecommended();
   },
@@ -340,8 +340,7 @@ export default {
     }
   }
 };
-</script
->>
+</script>
 
 <style scoped>
 h1 {
