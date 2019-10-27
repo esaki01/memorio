@@ -51,12 +51,12 @@ export default {
     this.lyrics = this.$route.params.lyric.split(/\s+/);
   },
   methods: {
-    get_pronunciation: function(k) {
+    get_pronunciation: function(l) {
       axios
         .get(
           "https://backend-n2zzz72gsq-uc.a.run.app/word/pronunciation/search",
           {
-            params: { keyword: k }
+            params: { lyric: l }
           }
         )
         .then(response => {
