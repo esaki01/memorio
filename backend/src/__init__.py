@@ -1,8 +1,10 @@
 from flask import Flask
 from flask_cors import CORS
 
-from src.adapters.controllers.music_controller import music
-from src.adapters.controllers.word_controller import word
+from src.adapters.controllers.pronunciation_controller import pronunciation
+from src.adapters.controllers.recommended_controller import recommended
+from src.adapters.controllers.song_controller import song
+from src.adapters.controllers.trending_controller import trending
 
 config = {"development": "config.DevelopmentConfig", "production": "config.ProductionConfig"}
 
@@ -16,8 +18,10 @@ def create_app() -> Flask:
     app.config.from_object(config[app.config.get("ENV", "development")])
     app.config.from_object(secrets)
 
-    app.register_blueprint(music)
-    app.register_blueprint(word)
+    app.register_blueprint(pronunciation)
+    app.register_blueprint(recommended)
+    app.register_blueprint(song)
+    app.register_blueprint(trending)
 
     CORS(app, origins=origins)
 

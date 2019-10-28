@@ -1,9 +1,9 @@
 import dataclasses
 
-from src.domain.music import Music
 
-
-@dataclasses.dataclass
+@dataclasses.dataclass(frozen=True)
 class Recommended:
-    music: Music
+    artist: str
+    title: str
+    jacket_image_url: str
     external_url: str
