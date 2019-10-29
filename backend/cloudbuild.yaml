@@ -34,7 +34,7 @@ steps:
       - 'beta'
       - 'run'
       - 'deploy'
-      - 'backend'
+      - 'parrot-api'
       - '--image'
       - 'gcr.io/${_GCP_PROJECT_ID}/parrot/backend'
       - '--platform'

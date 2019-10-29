@@ -10,7 +10,7 @@ config = {"development": "config.DevelopmentConfig", "production": "config.Produ
 
 secrets = "secrets.Secrets"
 
-origins = ["http://localhost:8080/*", "https://frontend-n2zzz72gsq-uc.a.run.app"]
+origins = ["http://localhost:8080/*", "https://parrot-n2zzz72gsq-uc.a.run.app/*"]
 
 
 def create_app() -> Flask:

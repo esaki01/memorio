@@ -54,7 +54,7 @@ export default {
         get_pronunciation: function(param) {
             axios
                 .get(
-                    "https://backend-n2zzz72gsq-uc.a.run.app/pronunciation/search",
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/pronunciation/search",
                     {
                         params: { words: param }
                     }

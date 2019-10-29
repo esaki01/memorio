@@ -24,7 +24,7 @@ steps:
       - 'beta'
       - 'run'
       - 'deploy'
-      - 'frontend'
+      - 'parrot'
       - '--image'
       - 'gcr.io/${_GCP_PROJECT_ID}/parrot/frontend'
       - '--platform'
