@@ -2,6 +2,8 @@ import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
-class Trending:
+class Song:
+    artist: str
     title: str
-    external_url: str
+    lyrics: str
+    jacket_image_url: str

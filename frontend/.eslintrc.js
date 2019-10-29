@@ -21,6 +21,7 @@ module.exports = {
         'vue'
     ],
     'rules': {
+        'no-console': 'off',
         'indent': [
             'error',
             4
@@ -28,10 +29,6 @@ module.exports = {
         'linebreak-style': [
             'error',
             'unix'
-        ],
-        'quotes': [
-            'error',
-            'single'
         ],
         'semi': [
             'error',

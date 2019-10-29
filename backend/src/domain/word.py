@@ -1,7 +1,7 @@
 import dataclasses
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(frozen=True)
 class Word:
-    id: str
+    name: str
     phonetic_symbol: str
