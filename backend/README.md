@@ -36,6 +36,9 @@ $ docker container run --rm -p 5000:5000 $(DOCKER_TAG_NAME)
 ## Extras
 ```
 # type check
+$ pipenv run type
+
+# lint
 $ pipenv run lint
 
 # format
