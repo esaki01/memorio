@@ -1,45 +1,45 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from './views/Home.vue';
-import Signin from './views/Signin.vue';
-import Signup from './views/Signup.vue';
-import Library from './views/Library.vue';
-import Lyric from './views/Lyric.vue';
-import firebase from 'firebase';
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "./views/Home.vue";
+import Signin from "./views/Signin.vue";
+import Signup from "./views/Signup.vue";
+import Library from "./views/Library.vue";
+import Lyrics from "./views/Lyrics.vue";
+import firebase from "firebase";
 
 Vue.use(Router);
 
 const router = new Router({
-    mode: 'history',
+    mode: "history",
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/',
-            name: 'home',
-            component: Home,
+            path: "/",
+            name: "home",
+            component: Home
         },
         {
-            path: '/library',
-            name: 'library',
+            path: "/library",
+            name: "library",
             component: Library,
-            meta: { requiresAuth: true },
+            meta: { requiresAuth: true }
         },
         {
-            path: '/signin',
-            name: 'signin',
-            component: Signin,
+            path: "/signin",
+            name: "signin",
+            component: Signin
         },
         {
-            path: '/signup',
-            name: 'signup',
-            component: Signup,
+            path: "/signup",
+            name: "signup",
+            component: Signup
         },
         {
-            path: '/lyric/:artist/:song/:image_url/:lyric',
-            name: 'lyric',
-            component: Lyric,
-        },
-    ],
+            path: "/lyrics/:artist/:title/:jacket_image_url/:lyrics",
+            name: "lyrics",
+            component: Lyrics
+        }
+    ]
 });
 
 router.beforeEach((to, from, next) => {
@@ -50,8 +50,8 @@ router.beforeEach((to, from, next) => {
                 next();
             } else {
                 next({
-                    path: '/signin',
-                    query: { redirect: to.fullPath },
+                    path: "/signin",
+                    query: { redirect: to.fullPath }
                 });
             }
         });
