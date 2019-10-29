@@ -315,13 +315,13 @@ export default {
 
             if (this.artist != "" && this.title != "") {
                 requestUrl =
-                    "https://backend-n2zzz72gsq-uc.a.run.app/song/artist-title/search";
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/song/artist-title/search";
             } else if (this.artist != "") {
                 requestUrl =
-                    "https://backend-n2zzz72gsq-uc.a.run.app/song/artist/search";
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/song/artist/search";
             } else if (this.title != "") {
                 requestUrl =
-                    "https://backend-n2zzz72gsq-uc.a.run.app/song/title/search";
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/song/title/search";
             }
 
             axios
@@ -348,7 +348,7 @@ export default {
         getTrending: function() {
             axios
                 .get(
-                    "https://backend-n2zzz72gsq-uc.a.run.app/trending/list",
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/trending/list",
                     {
                         params: { limit: 16, offset: 0 }
                     }
@@ -370,7 +370,7 @@ export default {
         getRecommended: function() {
             axios
                 .get(
-                    "https://backend-n2zzz72gsq-uc.a.run.app/recommended/list",
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/recommended/list",
                     {
                         params: {}
                     }
