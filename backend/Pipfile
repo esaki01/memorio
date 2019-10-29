@@ -25,5 +25,6 @@ python_version = "3.7"
 [scripts]
 init = "pipenv install --dev"
 start = "python app.py"
-lint = "mypy ."
+lint = "black . -l 120 --check --diff"
 format = "black . -l 120"
+type = "mypy ."
