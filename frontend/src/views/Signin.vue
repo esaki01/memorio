@@ -65,7 +65,7 @@
                             <a class="button is-fullwidth is-success" @click="signin">Sign in</a>
                         </p>
                         <p class="not-have">
-                            <span>New to PARROT?</span>
+                            <span>New to PARROT?&nbsp;</span>
                             <a>
                                 <router-link to="/signup">Create an account</router-link>
                             </a>.
