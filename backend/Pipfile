@@ -18,6 +18,7 @@ gunicorn = "==19.9.*"
 spotipy = "==2.4.*"
 lyricsgenius = "==1.7.*"
 google-cloud-bigquery = "==1.21.*"
+firebase-admin = "==3.1.*"
 
 [requires]
 python_version = "3.7"

@@ -1,6 +1,8 @@
+import firebase_admin
 from flask import Flask
 from flask_cors import CORS
 
+from src.adapters.controllers.library_controller import library
 from src.adapters.controllers.pronunciation_controller import pronunciation
 from src.adapters.controllers.recommended_controller import recommended
 from src.adapters.controllers.song_controller import song
@@ -18,6 +20,9 @@ def create_app() -> Flask:
     app.config.from_object(config[app.config.get("ENV", "development")])
     app.config.from_object(secrets)
 
+    firebase_admin.initialize_app()
+
+    app.register_blueprint(library)
     app.register_blueprint(pronunciation)
     app.register_blueprint(recommended)
     app.register_blueprint(song)
