@@ -5,6 +5,8 @@
                 <img :src="$route.params.jacket_image_url" alt="Image" />
                 <p class="title">{{ $route.params.title }}</p>
                 <p class="artist">{{ $route.params.artist }}</p>
+                <br />
+                <a class="button is-fullwidth is-success" @click="addSong">Add Song</a>
             </div>
             <div class="column is-three-quarters">
                 <table class="table is-striped is-fullwidth">
@@ -38,6 +40,7 @@
 
 <script>
 import axios from "axios";
+import firebase from "firebase";
 
 export default {
     data: function() {
@@ -47,11 +50,11 @@ export default {
         };
     },
     created: function() {
-        this.get_pronunciation(this.$route.params.lyrics);
+        this.getPronunciation(this.$route.params.lyrics);
         this.lyrics = this.$route.params.lyrics.split(/\s+/);
     },
     methods: {
-        get_pronunciation: function(param) {
+        getPronunciation: function(param) {
             axios
                 .get(
                     "https://parrot-api-n2zzz72gsq-uc.a.run.app/pronunciation/search",
@@ -70,6 +73,25 @@ export default {
                     console.log(error);
                 })
                 .finally(() => {});
+        },
+        addSong: function() {
+            axios
+                .post(
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/library/add/song",
+                    {
+                        user_id: firebase.auth().currentUser.uid,
+                        artist: this.$route.params.artist,
+                        title: this.$route.params.title,
+                        jacket_image_url: this.$route.params.jacket_image_url,
+                        lyrics: this.$route.params.lyrics
+                    }
+                )
+                .then(response => {
+                    console.log(response.data.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     }
 };
