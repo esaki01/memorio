@@ -51,6 +51,7 @@
 
 <script>
 import firebase from "firebase";
+import axios from "axios";
 
 export default {
     name: "Signup",
@@ -71,12 +72,28 @@ export default {
                 .auth()
                 .createUserWithEmailAndPassword(this.email, this.password)
                 .then(() => {
+                    this.createLibrary();
                     this.$router.push("/");
                 })
                 .catch(error => {
                     this.isSuccessShow = false;
                     this.isErrorShow = true;
                     this.errorMsg = error.message;
+                });
+        },
+        createLibrary: function() {
+            axios
+                .post(
+                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/library/create",
+                    {
+                        user_id: firebase.auth().currentUser.uid
+                    }
+                )
+                .then(response => {
+                    console.log(response.data.data);
+                })
+                .catch(error => {
+                    console.log(error);
                 });
         }
     }
