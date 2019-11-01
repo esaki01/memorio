@@ -1,9 +1,9 @@
 [submodule "parrot-api"]
 	path = parrot-api
-	url = https://github.com/esaki01/parrot-api.git
+	url = git@github.com:esaki01/parrot-api.git
 [submodule "parrot-front"]
 	path = parrot-front
-	url = https://github.com/esaki01/parrot-front.git
+	url = git@github.com:esaki01/parrot-front.git
 [submodule "parrot-infra"]
 	path = parrot-infra
-	url = https://github.com/esaki01/parrot-infra.git
+	url = git@github.com:esaki01/parrot-infra.git
