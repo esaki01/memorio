@@ -40,5 +40,15 @@ variable "service" {
     "cloudkms.googleapis.com",
     "compute.googleapis.com",
     "oslogin.googleapis.com",
+    "fcmregistrations.googleapis.com",
+    "firebaserules.googleapis.com",
+    "bigquerystorage.googleapis.com",
+    "firebaseappdistribution.googleapis.com",
+    "bigquery-json.googleapis.com",
+    "mobilecrashreporting.googleapis.com",
+    "googlecloudmessaging.googleapis.com",
+    "firestore.googleapis.com",
+    "firebaseinstallations.googleapis.com",
+    "securetoken.googleapis.com"
   ]
 }
