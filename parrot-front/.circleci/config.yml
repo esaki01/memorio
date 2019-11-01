@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build_and_test:
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:12.8
+
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: Project Setup
+          command: npm install
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - ./frontend/node_modules
+      - run:
+          name: Run Code Style
+          command: npm run lint
+      - persist_to_workspace:
+          root: ~/app
+          paths:
+            - .
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_and_test
