@@ -93,27 +93,34 @@ export default {
                 });
         },
         addSong: function() {
-            this.progressShow = true;
-            axios
-                .post(
-                    "https://parrot-api-n2zzz72gsq-uc.a.run.app/library/add/song",
-                    {
-                        user_id: firebase.auth().currentUser.uid,
-                        artist: this.$route.params.artist,
-                        title: this.$route.params.title,
-                        jacket_image_url: this.$route.params.jacket_image_url,
-                        lyrics: this.$route.params.lyrics
-                    }
-                )
-                .then(response => {
-                    console.log(response.data.data);
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-                .finally(() => {
-                    this.progressShow = false;
-                });
+            var user = firebase.auth().currentUser;
+
+            if (user) {
+                this.progressShow = true;
+                axios
+                    .post(
+                        "https://parrot-api-n2zzz72gsq-uc.a.run.app/library/add/song",
+                        {
+                            user_id: user.uid,
+                            artist: this.$route.params.artist,
+                            title: this.$route.params.title,
+                            jacket_image_url: this.$route.params
+                                .jacket_image_url,
+                            lyrics: this.$route.params.lyrics
+                        }
+                    )
+                    .then(response => {
+                        console.log(response.data.data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+                    .finally(() => {
+                        this.progressShow = false;
+                    });
+            } else {
+                this.$router.push("/signin");
+            }
         }
     }
 };

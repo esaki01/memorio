@@ -319,17 +319,18 @@ export default {
     },
     methods: {
         search: function() {
-            this.progressShow = true;
-
             var requestUrl = "";
 
             if (this.artist != "" && this.title != "") {
+                this.progressShow = true;
                 requestUrl =
                     "https://parrot-api-n2zzz72gsq-uc.a.run.app/song/artist-title/search";
             } else if (this.artist != "") {
+                this.progressShow = true;
                 requestUrl =
                     "https://parrot-api-n2zzz72gsq-uc.a.run.app/song/artist/search";
             } else if (this.title != "") {
+                this.progressShow = true;
                 requestUrl =
                     "https://parrot-api-n2zzz72gsq-uc.a.run.app/song/title/search";
             }
