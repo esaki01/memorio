@@ -62,7 +62,7 @@
 
                     <div class="field">
                         <p class="control">
-                            <a class="button is-fullwidth is-success" @click="signin">Sign in</a>
+                            <a class="button is-fullwidth is-primary" @click="signin">Sign in</a>
                         </p>
                         <p class="not-have">
                             <span>New to PARROT?&nbsp;</span>
@@ -158,7 +158,7 @@ export default {
 }
 
 .columns {
-    margin: 48px auto 0 auto;
+    margin: 24px auto 0 auto;
 }
 
 .form {
