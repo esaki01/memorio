@@ -1,38 +1,52 @@
 <template>
     <div class="lyrics">
-        <div class="columns contents">
-            <div class="column is-one-quarters">
-                <img :src="$route.params.jacket_image_url" alt="Image" />
-                <p class="title">{{ $route.params.title }}</p>
-                <p class="artist">{{ $route.params.artist }}</p>
-                <br />
-                <a class="button is-fullwidth is-success" @click="addSong">Add Song</a>
-            </div>
-            <div class="column is-three-quarters">
-                <table class="table is-striped is-fullwidth">
-                    <div v-for="i in 10" :key="i.id">
-                        <tbody>
-                            <tr>
-                                <td v-for="l in 10" :key="l.id">
-                                    <span class="title is-6">
-                                        {{
-                                        lyrics[l - 1 + (i - 1) * 10]
-                                        }}
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td v-for="p in 10" :key="p.id">
-                                    <span class="subtitle is-6">
-                                        {{
-                                        pronunciation[p - 1 + (i - 1) * 10]
-                                        }}
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </div>
-                </table>
+        <div class="contents container">
+            <h1 class="has-text-danger">Pronunciation of the Lyrics</h1>
+            <div class="columns">
+                <div class="column is-one-quarters">
+                    <img :src="$route.params.jacket_image_url" alt="Image" />
+                    <p class="song-title">{{ $route.params.title }}</p>
+                    <p class="song-artist has-text-danger">{{ $route.params.artist }}</p>
+                    <a
+                        class="button is-fullwidth is-primary"
+                        @click="addSong"
+                        v-bind:class="{'is-loading':progressShow}"
+                    >
+                        <strong>Add a song</strong>
+                    </a>
+                </div>
+                <div class="column is-three-quarters pronunciation-box">
+                    <table class="table is-striped is-fullwidth">
+                        <div v-for="i in 10" :key="i.id">
+                            <tbody>
+                                <tr>
+                                    <td v-for="l in 10" :key="l.id">
+                                        <span class="lyrics">
+                                            {{
+                                            lyrics[l - 1 + (i - 1) * 10]
+                                            }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td v-for="p in 10" :key="p.id">
+                                        <img
+                                            v-if="contentsShow"
+                                            style="width: 16px;"
+                                            alt="logo"
+                                            src="@/assets/loading.gif"
+                                        />
+                                        <span v-else class="pronunciation is-6">
+                                            {{
+                                            pronunciation[p - 1 + (i - 1) * 10]
+                                            }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -46,7 +60,9 @@ export default {
     data: function() {
         return {
             lyrics: [],
-            pronunciation: []
+            pronunciation: [],
+            progressShow: false,
+            contentsShow: true
         };
     },
     created: function() {
@@ -72,9 +88,12 @@ export default {
                 .catch(error => {
                     console.log(error);
                 })
-                .finally(() => {});
+                .finally(() => {
+                    this.contentsShow = false;
+                });
         },
         addSong: function() {
+            this.progressShow = true;
             axios
                 .post(
                     "https://parrot-api-n2zzz72gsq-uc.a.run.app/library/add/song",
@@ -91,6 +110,9 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                })
+                .finally(() => {
+                    this.progressShow = false;
                 });
         }
     }
@@ -100,19 +122,39 @@ export default {
 <style scoped>
 .contents {
     max-width: 1000px;
-    margin: 36px auto 0 auto;
+    padding: 0 0.75rem;
 }
 
-.title {
-    text-align: center;
-    font-size: 18px;
+h1 {
+    margin: 24px auto;
+    font-size: 24px;
     font-weight: bolder;
+    text-align: left;
+    font-family: "Oswald", sans-serif;
+}
+
+.lyrics {
+}
+
+.pronunciation {
+    color: #888888;
+}
+
+.song-title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
     margin: 5px 0;
 }
 
-.artist {
+.song-artist {
     text-align: center;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.pronunciation-box {
+    overflow: scroll;
 }
 </style>

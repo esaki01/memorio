@@ -1,8 +1,7 @@
 <template>
     <div class="library">
-        <div style="height: 12px;" />
         <div class="contents">
-            <h1>Song List</h1>
+            <h1>Song Library</h1>
             <div v-for="song in songs" :key="song.id" class="box">
                 <article class="media">
                     <div class="media-left">

@@ -40,7 +40,7 @@
 
                     <div class="field">
                         <p class="control">
-                            <a class="button is-fullwidth is-success" @click="signup">Sign up</a>
+                            <a class="button is-fullwidth is-danger" @click="signup">Sign up</a>
                         </p>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ export default {
 }
 
 .columns {
-    margin: 48px auto 0 auto;
+    margin: 24px auto 0 auto;
 }
 
 .form {

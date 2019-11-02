@@ -1,9 +1,7 @@
 <template>
     <div class="home">
-        <progress v-if="progressShow" class="progress is-small is-primary" max="100">15%</progress>
-        <div v-else style="height: 12px;" />
         <div class="search-form container">
-            <h1>Search Lyrics</h1>
+            <h1 class="has-text-danger">Search Lyrics</h1>
             <div class="field is-hidden-tablet">
                 <div class="field-body">
                     <div v-if="selected === 'Artist Search'" class="field has-addons">
@@ -69,8 +67,13 @@
                             </span>
                         </p>
                         <p class="control">
-                            <a class="button is-primary" @click="search">
-                                <span class="fa fa-search has-text-white" />
+                            <a
+                                class="button is-primary"
+                                style="width: 48px;"
+                                @click="search"
+                                v-bind:class="{'is-loading':progressShow}"
+                            >
+                                <span class="fa fa-search has-text-white" v-if="!progressShow" />
                             </a>
                         </p>
                     </div>
@@ -148,8 +151,13 @@
                             </span>
                         </p>
                         <p class="control">
-                            <a class="button is-primary" @click="search">
-                                <span class="fa fa-search has-text-white" />
+                            <a
+                                class="button is-fullwidth is-primary"
+                                style="width: 48px;"
+                                @click="search"
+                                v-bind:class="{'is-loading':progressShow}"
+                            >
+                                <span class="fa fa-search has-text-white" v-if="!progressShow" />
                             </a>
                         </p>
                     </div>
@@ -236,14 +244,16 @@
                         class="column is-one-quarter-tablet is-half-mobile"
                     >
                         <div class="card">
-                            <div class="card-image">
-                                <content-loader v-if="contentsShow" :width="400" :height="400">
-                                    <rect x="0" y="0" rx="0" ry="0" width="400" height="400" />
-                                </content-loader>
-                                <figure v-else class="image is-1by1">
-                                    <img :src="rl.jacket_image_url" alt="Image" />
-                                </figure>
-                            </div>
+                            <a :href="rl.external_url" target="_blank">
+                                <div class="card-image">
+                                    <content-loader v-if="contentsShow" :width="400" :height="400">
+                                        <rect x="0" y="0" rx="0" ry="0" width="400" height="400" />
+                                    </content-loader>
+                                    <figure v-else class="image is-1by1">
+                                        <img :src="rl.jacket_image_url" alt="Image" />
+                                    </figure>
+                                </div>
+                            </a>
                             <div class="card-content">
                                 <div class="media">
                                     <div class="media-content over-text">
@@ -267,7 +277,7 @@
                                                 <a
                                                     :href="rl.external_url"
                                                     target="_blank"
-                                                    class="extra-link"
+                                                    class="extra-link has-text-danger"
                                                 >{{ rl.title }}</a>
                                             </p>
                                         </div>
@@ -396,7 +406,6 @@ export default {
 <style scoped>
 h1 {
     margin: 24px auto;
-    color: #f14667;
     font-size: 24px;
     font-weight: bolder;
     text-align: left;
@@ -415,11 +424,10 @@ h2 {
 .extra-link {
     font-weight: 600;
     font-size: 14px;
-    color: #f14667;
 }
 
-.extra-link:hover {
-    opacity: 0.8;
+.subtitle :hover {
+    opacity: 0.6;
 }
 
 .search-form {
@@ -427,10 +435,6 @@ h2 {
     max-width: 1000px;
     text-align: left;
     padding: 0 0.75rem;
-}
-
-.fa-search {
-    color: #fa4667;
 }
 
 .ellipsis {
@@ -447,5 +451,9 @@ h2 {
 
 .trending-box {
     margin-bottom: 16px;
+}
+
+.card-image :hover {
+    opacity: 0.8;
 }
 </style>

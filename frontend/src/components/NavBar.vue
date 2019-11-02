@@ -24,26 +24,44 @@
         <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
             <div class="navbar-start">
                 <a v-if="user.uid" class="navbar-item">
+                    <router-link to="/">Home</router-link>
+                </a>
+                <a v-if="user.uid" class="navbar-item">
                     <router-link to="/library">Library</router-link>
+                </a>
+                <a v-else class="navbar-item">
+                    <router-link to="/">What is PARROT?</router-link>
                 </a>
             </div>
 
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a v-if="!user.uid" class="button is-rounded">
-                            <router-link to="/signin">Sign in</router-link>
+                        <a v-if="!user.uid" class="button is-primary">
+                            <router-link to="/signin">
+                                <strong class="has-text-white">
+                                    <i class="fa fa-sign-in"></i>&nbsp;Sign in
+                                </strong>
+                            </router-link>
                         </a>
-                        <a v-if="!user.uid" class="button is-rounded">
-                            <router-link to="/signup">Sign up</router-link>
+                        <a v-if="!user.uid" class="button is-danger">
+                            <router-link to="/signup">
+                                <strong class="has-text-white">
+                                    <i class="fa fa-user-plus"></i>&nbsp;Sign up
+                                </strong>
+                            </router-link>
                         </a>
                     </div>
                 </div>
+                <div class="navbar-item"></div>
                 <div
                     v-if="user.uid"
                     class="navbar-item has-dropdown is-left is-hoverable right-navbar-item"
                 >
-                    <a class="navbar-link">{{ name }}</a>
+                    <a class="navbar-link">
+                        <img alt="user logo" src="@/assets/avatar.png" class="avatar" />
+                        {{ name }}
+                    </a>
                     <div class="navbar-dropdown is-right">
                         <a class="navbar-item">My page</a>
                         <a class="navbar-item">
@@ -94,17 +112,20 @@ export default {
 
 <style scoped>
 nav {
-    padding: 10px 0;
-    box-shadow: 0 0 5px 1px rgb(225, 225, 225);
+    padding: 10px;
+    border-bottom: 2px solid whitesmoke;
     background-color: #ffffff;
 }
 
-.right-navbar-item {
-    padding-right: 20px;
+a {
+    color: #000000;
 }
 
-a {
-    font-weight: 600;
-    color: #666666;
+.fa {
+    font-size: 18px;
+}
+
+.avatar {
+    margin-right: 16px;
 }
 </style>
