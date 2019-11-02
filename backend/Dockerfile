@@ -10,4 +10,4 @@ RUN pipenv install --system --deploy
 
 ENV PORT=5000
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --limit-request-line 10000 app:app

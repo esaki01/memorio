@@ -1,7 +1,6 @@
 import firebase_admin
 from flask import Flask
 from flask_cors import CORS
-from gunicorn.http import message
 
 from src.adapters.controllers.library_controller import library
 from src.adapters.controllers.pronunciation_controller import pronunciation
@@ -22,8 +21,6 @@ def create_app() -> Flask:
     app.config.from_object(secrets)
 
     firebase_admin.initialize_app()
-
-    message.MAX_REQUEST_LINE = 10000
 
     app.register_blueprint(library)
     app.register_blueprint(pronunciation)
