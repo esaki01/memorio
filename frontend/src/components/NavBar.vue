@@ -53,7 +53,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="navbar-item"></div>
                 <div
                     v-if="user.uid"
                     class="navbar-item has-dropdown is-left is-hoverable right-navbar-item"
