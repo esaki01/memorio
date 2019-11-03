@@ -20,6 +20,13 @@
                     </div>
                 </article>
             </div>
+            <div v-if="isShowNoSongs" class="no-songs">
+                <p>No songs yet...</p>
+                <p>Let's add a song to your library!</p>
+                <a>
+                    <router-link to="/">Go Home</router-link>
+                </a>
+            </div>
         </div>
     </section>
 </template>
@@ -31,7 +38,8 @@ import firebase from "firebase";
 export default {
     data: function() {
         return {
-            songs: []
+            songs: [],
+            isShowNoSongs: false
         };
     },
     created: function() {
@@ -51,6 +59,11 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                })
+                .finally(() => {
+                    if (this.songs.length == 0) {
+                        this.isShowNoSongs = true;
+                    }
                 });
         }
     }
@@ -76,5 +89,19 @@ h1 {
     height: 100px;
     line-height: 24px;
     overflow: hidden;
+}
+
+.no-songs {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+.no-songs a {
+    color: #3173dc;
+}
+
+.no-songs a:hover {
+    text-decoration: underline;
 }
 </style>
