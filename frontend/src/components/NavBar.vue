@@ -63,7 +63,7 @@
                     class="navbar-item has-dropdown is-left is-hoverable right-navbar-item"
                 >
                     <a class="navbar-link">
-                        <img alt="user logo" src="@/assets/avatar.png" class="avatar" />
+                        <img alt="user logo" :src="imgSrc" class="avatar" />
                         {{ name }}
                     </a>
                     <div class="navbar-dropdown is-right">
@@ -90,7 +90,8 @@ export default {
         return {
             user: {},
             showNav: false,
-            name: null
+            name: null,
+            imgSrc: null
         };
     },
     created() {
@@ -99,6 +100,10 @@ export default {
             this.name = this.user.email
                 ? this.user.email.split("@")[0]
                 : this.user.displayName;
+
+            this.imgSrc = this.user.photoURL
+                ? this.user.photoURL
+                : require("../assets/avatar.png");
         });
     },
     methods: {
@@ -131,5 +136,6 @@ a {
 
 .avatar {
     margin-right: 16px;
+    border-radius: 100px;
 }
 </style>
