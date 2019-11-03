@@ -1,6 +1,6 @@
 <template>
-    <div class="lyrics">
-        <div class="contents container">
+    <section class="lyrics section">
+        <div class="container">
             <h1 class="has-text-danger">Pronunciation of the Lyrics</h1>
             <div class="columns">
                 <div class="column is-one-quarters">
@@ -49,7 +49,21 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="modal" v-bind:class="{ 'is-active': isShowModal }">
+            <div class="modal-background" v-on:click="isShowModal = false"></div>
+            <div class="modal-content">
+                <div class="notification is-primary">
+                    <button class="delete" v-on:click="isShowModal = false"></button>
+                    <p>
+                        Success to add
+                        <strong>"{{ $route.params.title }}"</strong> to your library.
+                        <router-link to="/library">Go to library!</router-link>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -62,7 +76,8 @@ export default {
             lyrics: [],
             pronunciation: [],
             progressShow: false,
-            contentsShow: true
+            contentsShow: true,
+            isShowModal: false
         };
     },
     created: function() {
@@ -111,6 +126,7 @@ export default {
                     )
                     .then(response => {
                         console.log(response.data.data);
+                        this.isShowModal = true;
                     })
                     .catch(error => {
                         console.log(error);
@@ -127,20 +143,17 @@ export default {
 </script>
 
 <style scoped>
-.contents {
+.lyrics {
     max-width: 1000px;
-    padding: 0 0.75rem;
+    margin: auto;
 }
 
 h1 {
-    margin: 24px auto;
+    margin-bottom: 24px;
     font-size: 24px;
     font-weight: bolder;
     text-align: left;
     font-family: "Oswald", sans-serif;
-}
-
-.lyrics {
 }
 
 .pronunciation {

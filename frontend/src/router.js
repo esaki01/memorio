@@ -5,6 +5,7 @@ import Signin from "./views/Signin.vue";
 import Signup from "./views/Signup.vue";
 import Library from "./views/Library.vue";
 import Lyrics from "./views/Lyrics.vue";
+import Description from "./views/Description.vue";
 import firebase from "firebase";
 
 Vue.use(Router);
@@ -17,6 +18,11 @@ const router = new Router({
             path: "/",
             name: "home",
             component: Home
+        },
+        {
+            path: "/description",
+            name: "description",
+            component: Description
         },
         {
             path: "/library",

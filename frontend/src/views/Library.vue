@@ -1,7 +1,7 @@
 <template>
-    <div class="library">
-        <div class="contents">
-            <h1>Song Library</h1>
+    <section class="library section">
+        <div class="container">
+            <h1 class="has-text-danger">Library</h1>
             <div v-for="song in songs" :key="song.id" class="box">
                 <article class="media">
                     <div class="media-left">
@@ -21,7 +21,7 @@
                 </article>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -58,16 +58,13 @@ export default {
 </script>
 
 <style scoped>
-.contents {
-    margin: auto;
+.library {
     max-width: 1000px;
-    text-align: left;
-    padding: 0 0.75rem;
+    margin: auto;
 }
 
 h1 {
-    margin: 24px auto;
-    color: #f14667;
+    margin-bottom: 24px;
     font-size: 24px;
     font-weight: bolder;
     text-align: left;
@@ -79,10 +76,5 @@ h1 {
     height: 100px;
     line-height: 24px;
     overflow: hidden;
-}
-
-.over-text {
-    overflow: hidden;
-    white-space: nowrap;
 }
 </style>
