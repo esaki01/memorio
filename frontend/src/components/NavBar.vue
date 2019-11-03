@@ -29,9 +29,14 @@
                 <a v-if="user.uid" class="navbar-item">
                     <router-link to="/library">Library</router-link>
                 </a>
-                <a v-else class="navbar-item">
-                    <router-link to="/">What is PARROT?</router-link>
-                </a>
+                <div v-else class="navbar-item has-dropdown is-left is-hoverable right-navbar-item">
+                    <a class="navbar-link">More info</a>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item">
+                            <router-link to="/description">What is PARROT?</router-link>
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <div class="navbar-end">
