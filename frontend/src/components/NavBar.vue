@@ -23,18 +23,21 @@
 
         <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
             <div class="navbar-start">
-                <a v-if="user.uid" class="navbar-item">
-                    <router-link to="/">Home</router-link>
-                </a>
-                <a v-if="user.uid" class="navbar-item">
-                    <router-link to="/library">Library</router-link>
-                </a>
-                <div v-else class="navbar-item has-dropdown is-left is-hoverable right-navbar-item">
+                <router-link v-if="user.uid" class="navbar-item" to="/">
+                    <a>Home</a>
+                </router-link>
+                <router-link v-if="user.uid" class="navbar-item" to="/library">
+                    <a>Library</a>
+                </router-link>
+                <div
+                    v-if="!user.uid"
+                    class="navbar-item has-dropdown is-left is-hoverable right-navbar-item"
+                >
                     <a class="navbar-link">More info</a>
                     <div class="navbar-dropdown is-right">
-                        <a class="navbar-item">
-                            <router-link to="/description">What is PARROT?</router-link>
-                        </a>
+                        <router-link to="/description">
+                            <a class="navbar-item">What is PARROT?</a>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -42,20 +45,20 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a v-if="!user.uid" class="button is-primary">
-                            <router-link to="/signin">
+                        <router-link v-if="!user.uid" class="button is-primary" to="/signin">
+                            <a>
                                 <strong class="has-text-white">
                                     <i class="fa fa-sign-in"></i>&nbsp;Sign in
                                 </strong>
-                            </router-link>
-                        </a>
-                        <a v-if="!user.uid" class="button is-danger">
-                            <router-link to="/signup">
+                            </a>
+                        </router-link>
+                        <router-link v-if="!user.uid" class="button is-danger" to="/signup">
+                            <a>
                                 <strong class="has-text-white">
                                     <i class="fa fa-user-plus"></i>&nbsp;Sign up
                                 </strong>
-                            </router-link>
-                        </a>
+                            </a>
+                        </router-link>
                     </div>
                 </div>
                 <div
@@ -68,13 +71,13 @@
                     </a>
                     <div class="navbar-dropdown is-right">
                         <a class="navbar-item">My page</a>
-                        <a class="navbar-item">
-                            <router-link to="/about">About</router-link>
-                        </a>
+                        <router-link class="navbar-item" to="/about">
+                            <a>About</a>
+                        </router-link>
                         <hr class="navbar-divider" />
-                        <a class="navbar-item" @click="signout">
-                            <router-link to="/signout">Sign out</router-link>
-                        </a>
+                        <router-link to="/signout">
+                            <a class="navbar-item" @click="signout">Sign out</a>
+                        </router-link>
                     </div>
                 </div>
             </div>
