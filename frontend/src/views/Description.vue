@@ -5,7 +5,7 @@
 
             <h3>Overview</h3>
             <p>
-                <strong class="has-text-danger">PARROT</strong>は、"Parrot's Law" という英語学習方法を用いて、英語をより効率的に、さらに楽しみながら学習するためのプラットフォームです。
+                <strong class="has-text-danger">PARROT</strong> は、"Parrot's Law" という英語学習方法を用いて、英語をより効率的に、さらに楽しみながら学習するためのプラットフォームです。
                 PARROT では、洋楽の歌詞を検索することができ、歌詞に含まれる単語の発音記号を自動で取得します。また、サインインすることで、検索した歌詞を自身のライブラリに追加し保存することができます。
             </p>
             <h3>Parrot's Law</h3>
