@@ -1,0 +1,9 @@
+[submodule "parrot-backend"]
+	path = parrot-backend
+	url = https://github.com/esaki01/parrot-backend
+[submodule "parrot-frontend"]
+	path = parrot-frontend
+	url = https://github.com/esaki01/parrot-frontend.git
+[submodule "parrot-infrastructure"]
+	path = parrot-infrastructure
+	url = https://github.com/esaki01/parrot-infrastructure.git
