@@ -1,0 +1,3 @@
+[submodule "parrot-backend"]
+	path = parrot-backend
+	url = https://github.com/esaki01/parrot-backend
