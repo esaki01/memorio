@@ -1,8 +1,8 @@
 from firebase_admin import firestore
 
 from src.adapters.repositories.library_repository import LibraryRepository
-from src.domain.library import Library
-from src.domain.song import Song
+from src.entities.library import Library
+from src.entities.song import Song
 
 
 class LibraryRepositoryImpl(LibraryRepository):

@@ -2,8 +2,8 @@ from flask import Blueprint, request
 
 from src.exception.error import ValidationError, UnexpectedError
 from src.exception.handler import handle_validation_error, handle_unexpected_error, handle_success
-from src.usecases.trending.dtos.get_trending_request import GetTrendingRequest
 from src.usecases.trending.interactors.get_trending_interactor import GetTrendingInteractor
+from src.usecases.trending.requests.get_trending_request import GetTrendingRequest
 
 trending = Blueprint("trending", __name__, url_prefix="/trending")
 

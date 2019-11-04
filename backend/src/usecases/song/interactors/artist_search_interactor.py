@@ -1,11 +1,11 @@
 import lyricsgenius
 from flask import current_app
 
-from src.domain.song import Song
+from src.entities.song import Song
 from src.exception.error import UnexpectedError
 from src.usecases.song.artist_search_usecase import ArtistSearchUseCase
-from src.usecases.song.dtos.artist_search_request import ArtistSearchRequest
-from src.usecases.song.dtos.artist_search_response import ArtistSearchResponse
+from src.usecases.song.requests.artist_search_request import ArtistSearchRequest
+from src.usecases.song.responses.artist_search_response import ArtistSearchResponse
 
 
 class ArtistSearchInteractor(ArtistSearchUseCase):

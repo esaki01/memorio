@@ -2,11 +2,11 @@ import spotipy
 from flask import current_app
 from spotipy.oauth2 import SpotifyClientCredentials
 
-from src.domain.recommended import Recommended
+from src.entities.recommended import Recommended
 from src.exception.error import UnexpectedError
-from src.usecases.recommended.dtos.get_recommended_request import GetRecommendedRequest
-from src.usecases.recommended.dtos.get_recommended_response import GetRecommendedResponse
 from src.usecases.recommended.get_recommended_usecase import GetRecommendedUseCase
+from src.usecases.recommended.requests.get_recommended_request import GetRecommendedRequest
+from src.usecases.recommended.responses.get_recommended_response import GetRecommendedResponse
 
 
 class GetRecommendedInteractor(GetRecommendedUseCase):

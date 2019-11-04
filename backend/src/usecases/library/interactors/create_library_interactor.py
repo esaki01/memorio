@@ -3,8 +3,8 @@ import logging
 from src.adapters.repositories.library_repository import LibraryRepository
 from src.exception.error import UnexpectedError
 from src.usecases.library.create_library_usecase import CreateLibraryUseCase
-from src.usecases.library.dtos.create_library_request import CreateLibraryRequest
-from src.usecases.library.dtos.create_library_response import CreateLibraryResponse
+from src.usecases.library.requests.create_library_request import CreateLibraryRequest
+from src.usecases.library.responses.create_library_response import CreateLibraryResponse
 
 
 class CreateLibraryInteractor(CreateLibraryUseCase):

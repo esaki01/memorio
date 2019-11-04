@@ -1,12 +1,12 @@
 import logging
 
 from src.adapters.repositories.library_repository import LibraryRepository
-from src.domain.library import Library
-from src.domain.song import Song
+from src.entities.library import Library
+from src.entities.song import Song
 from src.exception.error import UnexpectedError
 from src.usecases.library.add_song_usecase import AddSongUseCase
-from src.usecases.library.dtos.add_song_request import AddSongRequest
-from src.usecases.library.dtos.add_song_response import AddSongResponse
+from src.usecases.library.requests.add_song_request import AddSongRequest
+from src.usecases.library.responses.add_song_response import AddSongResponse
 
 
 class AddSongInteractor(AddSongUseCase):

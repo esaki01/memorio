@@ -2,9 +2,9 @@ import logging
 
 from src.adapters.repositories.library_repository import LibraryRepository
 from src.exception.error import UnexpectedError
-from src.usecases.library.dtos.get_library_request import GetLibraryRequest
-from src.usecases.library.dtos.get_library_response import GetLibraryResponse
 from src.usecases.library.get_library_usecase import GetLibraryUseCase
+from src.usecases.library.requests.get_library_request import GetLibraryRequest
+from src.usecases.library.responses.get_library_response import GetLibraryResponse
 
 
 class GetLibraryInteractor(GetLibraryUseCase):

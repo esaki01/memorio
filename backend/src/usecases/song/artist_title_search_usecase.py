@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
-from src.usecases.song.dtos.artist_title_search_request import ArtistTitleSearchRequest
-from src.usecases.song.dtos.artist_title_search_response import ArtistTitleSearchResponse
+from src.usecases.song.requests.artist_title_search_request import ArtistTitleSearchRequest
+from src.usecases.song.responses.artist_title_search_response import ArtistTitleSearchResponse
 
 
 class ArtistTitleSearchUseCase(metaclass=ABCMeta):

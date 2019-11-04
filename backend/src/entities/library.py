@@ -1,9 +1,10 @@
 import dataclasses
 from typing import List
 
-from src.domain.song import Song
+from src.entities.song import Song
 
 
 @dataclasses.dataclass
-class TitleSearchResponse:
+class Library:
+    user_id: str
     songs: List[Song]
