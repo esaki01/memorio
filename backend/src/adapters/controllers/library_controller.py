@@ -2,8 +2,8 @@ import json
 
 from flask import Blueprint, request
 
-from src.adapters.repositories.impl.library_repository_impl import LibraryRepositoryImpl
-from src.adapters.repositories.library_repository import LibraryRepository
+from src.adapters.gateways.library_gateway import LibraryGateway
+from src.adapters.gateways.repositories.library_repository import LibraryRepository
 from src.exception.error import ValidationError, UnexpectedError
 from src.exception.handler import handle_validation_error, handle_success, handle_unexpected_error
 from src.usecases.library.interactors.add_song_interactor import AddSongInteractor
@@ -29,8 +29,8 @@ def library_list():
         except ValidationError as e:
             return handle_validation_error(e)
 
-        library_repo: LibraryRepository = LibraryRepositoryImpl()
-        gl_interactor = GetLibraryInteractor(library_repo)
+        library_gateway: LibraryGateway = LibraryRepository()
+        gl_interactor = GetLibraryInteractor(library_gateway)
 
         try:
             gl_response: GetLibraryResponse = gl_interactor.handle(gl_request)
@@ -50,8 +50,8 @@ def library_create():
         except ValidationError as e:
             return handle_validation_error(e)
 
-        library_repo: LibraryRepository = LibraryRepositoryImpl()
-        cl_interactor = CreateLibraryInteractor(library_repo)
+        library_gateway: LibraryGateway = LibraryRepository()
+        cl_interactor = CreateLibraryInteractor(library_gateway)
 
         try:
             cl_response: CreateLibraryResponse = cl_interactor.handle(cl_request)
@@ -71,8 +71,8 @@ def library_add_song():
         except ValidationError as e:
             return handle_validation_error(e)
 
-        library_repo: LibraryRepository = LibraryRepositoryImpl()
-        as_interactor = AddSongInteractor(library_repo)
+        library_gateway: LibraryGateway = LibraryRepository()
+        as_interactor = AddSongInteractor(library_gateway)
 
         try:
             as_response: AddSongResponse = as_interactor.handle(as_request)
