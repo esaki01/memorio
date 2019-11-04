@@ -1,7 +1,7 @@
 import dataclasses
 from typing import List
 
-from src.domain.recommended import Recommended
+from src.entities.recommended import Recommended
 
 
 @dataclasses.dataclass

@@ -1,19 +1,20 @@
+import json
+
 from flask import Blueprint, request
 
 from src.adapters.repositories.impl.library_repository_impl import LibraryRepositoryImpl
 from src.adapters.repositories.library_repository import LibraryRepository
 from src.exception.error import ValidationError, UnexpectedError
 from src.exception.handler import handle_validation_error, handle_success, handle_unexpected_error
-from src.usecases.library.dtos.add_song_request import AddSongRequest
-from src.usecases.library.dtos.add_song_response import AddSongResponse
-from src.usecases.library.dtos.create_library_request import CreateLibraryRequest
-from src.usecases.library.dtos.create_library_response import CreateLibraryResponse
-from src.usecases.library.dtos.get_library_request import GetLibraryRequest
-from src.usecases.library.dtos.get_library_response import GetLibraryResponse
 from src.usecases.library.interactors.add_song_interactor import AddSongInteractor
 from src.usecases.library.interactors.create_library_interactor import CreateLibraryInteractor
 from src.usecases.library.interactors.get_library_interactor import GetLibraryInteractor
-import json
+from src.usecases.library.requests.add_song_request import AddSongRequest
+from src.usecases.library.requests.create_library_request import CreateLibraryRequest
+from src.usecases.library.requests.get_library_request import GetLibraryRequest
+from src.usecases.library.responses.add_song_response import AddSongResponse
+from src.usecases.library.responses.create_library_response import CreateLibraryResponse
+from src.usecases.library.responses.get_library_response import GetLibraryResponse
 
 library = Blueprint("library", __name__, url_prefix="/library")
 

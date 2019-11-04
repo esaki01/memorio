@@ -2,8 +2,8 @@ from flask import Blueprint, request
 
 from src.exception.error import ValidationError, UnexpectedError
 from src.exception.handler import handle_validation_error, handle_unexpected_error, handle_success
-from src.usecases.recommended.dtos.get_recommended_request import GetRecommendedRequest
 from src.usecases.recommended.interactors.get_recommended_interactor import GetRecommendedInteractor
+from src.usecases.recommended.requests.get_recommended_request import GetRecommendedRequest
 
 recommended = Blueprint("recommended", __name__, url_prefix="/recommended")
 

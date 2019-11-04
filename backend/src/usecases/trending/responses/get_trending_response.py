@@ -1,7 +1,7 @@
 import dataclasses
 from typing import List
 
-from src.domain.trending import Trending
+from src.entities.trending import Trending
 
 
 @dataclasses.dataclass

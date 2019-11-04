@@ -3,7 +3,7 @@ from typing import List
 from google.cloud import bigquery
 
 from src.adapters.repositories.word_repository import WordRepository
-from src.domain.word import Word
+from src.entities.word import Word
 
 
 class WordRepositoryImpl(WordRepository):

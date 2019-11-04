@@ -4,8 +4,8 @@ from src.adapters.repositories.impl.word_repository_impl import WordRepositoryIm
 from src.adapters.repositories.word_repository import WordRepository
 from src.exception.error import ValidationError
 from src.exception.handler import handle_validation_error, handle_success
-from src.usecases.pronunciation.dtos.get_pronunciation_request import GetPronunciationRequest
 from src.usecases.pronunciation.interactors.get_pronunciation_interactor import GetPronunciationInteractor
+from src.usecases.pronunciation.requests.get_pronunciation_request import GetPronunciationRequest
 
 pronunciation = Blueprint("pronunciation", __name__, url_prefix="/pronunciation")
 

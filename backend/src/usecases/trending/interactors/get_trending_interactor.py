@@ -2,11 +2,11 @@ import spotipy
 from flask import current_app
 from spotipy.oauth2 import SpotifyClientCredentials
 
-from src.domain.trending import Trending
+from src.entities.trending import Trending
 from src.exception.error import UnexpectedError
-from src.usecases.trending.dtos.get_trending_request import GetTrendingRequest
-from src.usecases.trending.dtos.get_trending_response import GetTrendingResponse
 from src.usecases.trending.get_trending_usecase import GetTrendingUseCase
+from src.usecases.trending.requests.get_trending_request import GetTrendingRequest
+from src.usecases.trending.responses.get_trending_response import GetTrendingResponse
 
 
 class GetTrendingInteractor(GetTrendingUseCase):

@@ -1,9 +1,9 @@
 import re
 
 from src.adapters.repositories.word_repository import WordRepository
-from src.usecases.pronunciation.dtos.get_pronunciation_request import GetPronunciationRequest
-from src.usecases.pronunciation.dtos.get_pronunciation_response import GetPronunciationResponse
 from src.usecases.pronunciation.get_pronunciation_usecase import GetPronunciationUseCase
+from src.usecases.pronunciation.requests.get_pronunciation_request import GetPronunciationRequest
+from src.usecases.pronunciation.responses.get_pronunciation_response import GetPronunciationResponse
 
 
 class GetPronunciationInteractor(GetPronunciationUseCase):

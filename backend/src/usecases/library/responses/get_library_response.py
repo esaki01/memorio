@@ -1,6 +1,6 @@
 import dataclasses
 
-from src.domain.library import Library
+from src.entities.library import Library
 
 
 @dataclasses.dataclass

@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from src.domain.library import Library
+from src.entities.library import Library
 
 
 class LibraryRepository(metaclass=ABCMeta):

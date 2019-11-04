@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
-from src.usecases.library.dtos.get_library_request import GetLibraryRequest
-from src.usecases.library.dtos.get_library_response import GetLibraryResponse
+from src.usecases.library.requests.get_library_request import GetLibraryRequest
+from src.usecases.library.responses.get_library_response import GetLibraryResponse
 
 
 class GetLibraryUseCase(metaclass=ABCMeta):

@@ -2,12 +2,12 @@ from flask import Blueprint, request
 
 from src.exception.error import ValidationError, UnexpectedError
 from src.exception.handler import handle_validation_error, handle_unexpected_error, handle_success
-from src.usecases.song.dtos.artist_search_request import ArtistSearchRequest
-from src.usecases.song.dtos.artist_title_search_request import ArtistTitleSearchRequest
-from src.usecases.song.dtos.title_search_request import TitleSearchRequest
 from src.usecases.song.interactors.artist_search_interactor import ArtistSearchInteractor
 from src.usecases.song.interactors.artist_title_search_interactor import ArtistTitleSearchInteractor
 from src.usecases.song.interactors.title_search_interactor import TitleSearchInteractor
+from src.usecases.song.requests.artist_search_request import ArtistSearchRequest
+from src.usecases.song.requests.artist_title_search_request import ArtistTitleSearchRequest
+from src.usecases.song.requests.title_search_request import TitleSearchRequest
 
 song = Blueprint("song", __name__, url_prefix="/song")
 
