@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 from src.entities.library import Library
 
 
-class LibraryRepository(metaclass=ABCMeta):
+class LibraryGateway(metaclass=ABCMeta):
     @abstractmethod
     def find_by_user_id(self, user_id: str) -> Library:
         raise NotImplementedError()

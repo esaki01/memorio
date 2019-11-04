@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 
-from src.adapters.repositories.impl.word_repository_impl import WordRepositoryImpl
-from src.adapters.repositories.word_repository import WordRepository
+from src.adapters.gateways.repositories.word_repository import WordRepository
+from src.adapters.gateways.word_gateway import WordGateway
 from src.exception.error import ValidationError
 from src.exception.handler import handle_validation_error, handle_success
 from src.usecases.pronunciation.interactors.get_pronunciation_interactor import GetPronunciationInteractor
@@ -20,9 +20,9 @@ def pronunciation_search():
         except ValidationError as e:
             return handle_validation_error(e)
 
-        word_repo: WordRepository = WordRepositoryImpl()
+        word_gateway: WordGateway = WordRepository()
 
-        gp_interactor = GetPronunciationInteractor(word_repo)
+        gp_interactor = GetPronunciationInteractor(word_gateway)
 
         gp_response = gp_interactor.handle(gp_request)
 
