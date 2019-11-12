@@ -11,9 +11,11 @@ The parrot needs to remember the same words about 2000 times to learn human lang
 Specifically, by reviewing short textbooks (e.g. the song lyrics) many times, you will be able to understand how to pronounce the words in the textbooks and understand the meaning of each word.
 
 ## Repositories
-- parrot-backend
-  - The backend service written in Python (Flask). Also, an example of clean architecture.
-- parrot-frontend
-  - The frontend service written in JavaScript (Vue.js).
-- parrot-infrastructure
-  - Infrastructure as Code (Terraform). 
+### [parrot-backend](https://github.com/esaki01/parrot-backend)
+The backend service written in Python (Flask). Also, an example of clean architecture.
+
+### [parrot-frontend](https://github.com/esaki01/parrot-frontend)
+The frontend service written in JavaScript (Vue.js).
+
+### [parrot-infrastructure](https://github.com/esaki01/parrot-infrastructure)
+Infrastructure as Code (Terraform). 
