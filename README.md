@@ -1,4 +1,4 @@
-# parrot
+# Parrot's Law
 >A web service will help you learn English by doing "Parrot's Law".
 
 ![image](https://user-images.githubusercontent.com/44774033/67483452-d4fc1000-f6a0-11e9-851c-7f04f0e2de1e.png)
